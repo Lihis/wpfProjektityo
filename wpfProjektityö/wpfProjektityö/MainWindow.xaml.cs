@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace wpfProjektityö
 {
@@ -23,6 +24,29 @@ namespace wpfProjektityö
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            haeTilat();
+        }
+
+        void haeTilat()
+        {
+            XmlReader reader = XmlReader.Create(@"Resources\tietokanta.xml");
+
+            while (reader.Read())
+            {
+                reader.MoveToContent();
+
+                if (reader.NodeType == XmlNodeType.Element &&
+                    reader.Name == "Nimi")
+                {
+                    reader.Read();
+                    lstTilat.Items.Add(reader.Value);
+                }
+            }
+            reader.Close();
         }
     }
 }
