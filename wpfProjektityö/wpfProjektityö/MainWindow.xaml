@@ -126,21 +126,21 @@
                             <Label Content="Haku:"/>
                         </Border>
                     </Border>
-                    <ListView Height="460" Margin="285,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="986">
+                    <ListView x:Name="lstAsiakas" Height="460" Margin="285,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="986">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Width="auto" Header="Asiakas Nro."/>
-                                <GridViewColumn Width="auto" Header="Nimi"/>
-                                <GridViewColumn Width="auto" Header="Osoite"/>
-                                <GridViewColumn Width="auto" Header="Email"/>
-                                <GridViewColumn Width="auto" Header="Puh."/>
-                                <GridViewColumn Width="auto" Header="Tyyppi"/>
+                                <GridViewColumn x:Name="lstAID" Width="100" Header="Asiakas Nro."/>
+                                <GridViewColumn x:Name="lstNimi" Width="100" Header="Nimi"/>
+                                <GridViewColumn x:Name="lstOsoite" Width="100" Header="Osoite"/>
+                                <GridViewColumn x:Name="lstEmail" Width="100" Header="Email"/>
+                                <GridViewColumn x:Name="lstPuh" Width="100" Header="Puh."/>
+                                <GridViewColumn x:Name="lstTyyppi" Width="100" Header="Tyyppi"/>
                                 <GridViewColumn Width="auto" />
                             </GridView>
                         </ListView.View>
                         <CheckBox/>
                     </ListView>
-                    <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="182,47,0,0" Height="29"/>
+                    <Button Content="Haku" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="182,47,0,0" Height="29"/>
                     <TextBox HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="167" Margin="10,50,0,0"/>
                 </Grid>
             </TabItem>

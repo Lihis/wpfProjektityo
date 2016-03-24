@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 
+
 namespace wpfProjektityö
 {
     /// <summary>
@@ -29,6 +30,25 @@ namespace wpfProjektityö
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             haeTilat();
+            haeAsiakkaat();
+        }
+
+        void haeAsiakkaat()
+        {
+
+            var gridView = new GridView();
+            this.lstAsiakas.View = gridView;
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Id",
+                DisplayMemberBinding = new Binding("Id")
+            });
+            gridView.Columns.Add(new GridViewColumn
+            {
+                Header = "Name",
+                DisplayMemberBinding = new Binding("Name")
+            });
+            this.lstAsiakas.Items.Add(new { Id = 1, Name = "David" });
         }
 
         void haeTilat()
