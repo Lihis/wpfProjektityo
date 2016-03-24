@@ -118,7 +118,7 @@
                         </ListView.View>
                     </ListView>
                     <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="182,47,0,0" Height="29"/>
-                    <TextBox HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="167" Margin="10,50,0,0"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="167" Margin="10,50,0,0"/>
                 </Grid>
             </TabItem>
         </TabControl>
