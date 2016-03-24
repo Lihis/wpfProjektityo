@@ -1,20 +1,20 @@
 ﻿<Window x:Class="wpfProjektityö.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Varauskalenteri - © Turku Mechanical Meerkat" Height="586" Width="1300" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="Varauskalenteri - © Turku Mechanical Meerkat" Height="840" Width="1300" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="557" VerticalAlignment="Top" Width="1291">
+        <TabControl HorizontalAlignment="Left" Height="813" VerticalAlignment="Top" Width="1291">
             <TabItem Header="Varaus">
                 <Grid Background="#FFE5E5E5">
-                    <Border BorderBrush="Black" BorderThickness="1" Margin="10,10,1023,278">
-                        <ListBox x:Name="lstTilat" HorizontalAlignment="Left" Height="209" Margin="-1,27,-1,-1" VerticalAlignment="Top" Width="248"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="10,10,1023,459">
+                        <ListBox x:Name="lstTilat" HorizontalAlignment="Left" Height="284" Margin="-1,27,-1,-1" VerticalAlignment="Top" Width="248"/>
                     </Border>
                     <Label Content="Tilat" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
-                    <Border BorderBrush="Black" BorderThickness="1" Margin="10,252,1023,55">
-                        <Calendar Margin="9,20,9,9"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="10,327,1023,58">
+                        <Calendar Margin="9,32,9,9"/>
                     </Border>
-                    <Label Content="Päivämäärä" HorizontalAlignment="Left" Margin="10,252,0,0" VerticalAlignment="Top" FontSize="14"/>
-                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="460" Margin="263,10,0,0" VerticalAlignment="Top" Width="1008">
+                    <Label Content="Päivämäärä" HorizontalAlignment="Left" Margin="10,327,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="713" Margin="263,10,0,0" VerticalAlignment="Top" Width="1008">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="25" />
@@ -43,11 +43,27 @@
                                 <Label>10:00-10:30</Label>
                                 <Label>10:30-11:00</Label>
                                 <Label>11:00-11:30</Label>
-                                <Label>11:30-16</Label>
-                                <Label>16-17</Label>
-                                <Label>17-18</Label>
-                                <Label>18-19</Label>
-                                <Label>20-21</Label>
+                                <Label>11:30-12:00</Label>
+                                <Label>12:00-12:30</Label>
+                                <Label>12:30-13:00</Label>
+                                <Label>13:00-13:30</Label>
+                                <Label>13:30-14:00</Label>
+                                <Label>14:00-14:30</Label>
+                                <Label>14:30-15:00</Label>
+                                <Label>15:00-15:30</Label>
+                                <Label>15:30-16:00</Label>
+                                <Label>16:00-16:30</Label>
+                                <Label>16:30-17:00</Label>
+                                <Label>17:00-17:30</Label>
+                                <Label>17:30-18:00</Label>
+                                <Label>18:00-18:30</Label>
+                                <Label>18:30-19:00</Label>
+                                <Label>19:00-19:30</Label>
+                                <Label>19:30-20:00</Label>
+                                <Label>20:00-20:30</Label>
+                                <Label>20:30-21:00</Label>
+                                <Label>21:00-21:30</Label>
+                                <Label>21:30-22:00</Label>
                             </StackPanel>
                             <ListView Name="lstMaanantai" Grid.Column="1" Grid.Row="1">
                                 <ListView.View>
@@ -100,7 +116,7 @@
                             </ListView>
                         </Grid>
                     </Border>
-                    <Button Content="Tee varaus" HorizontalAlignment="Left" Margin="178,475,0,0" VerticalAlignment="Top" Width="80" Height="40"/>
+                    <Button Content="Tee varaus" HorizontalAlignment="Left" Margin="178,729,0,0" VerticalAlignment="Top" Width="80" Height="40"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Asiakas">
