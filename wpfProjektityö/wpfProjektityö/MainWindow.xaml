@@ -113,9 +113,16 @@
                     <ListView Height="460" Margin="285,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="986">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn/>
+                                <GridViewColumn Width="auto" Header="Asiakas Nro."/>
+                                <GridViewColumn Width="auto" Header="Nimi"/>
+                                <GridViewColumn Width="auto" Header="Osoite"/>
+                                <GridViewColumn Width="auto" Header="Email"/>
+                                <GridViewColumn Width="auto" Header="Puh."/>
+                                <GridViewColumn Width="auto" Header="Tyyppi"/>
+                                <GridViewColumn Width="auto" />
                             </GridView>
                         </ListView.View>
+                        <CheckBox/>
                     </ListView>
                     <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="182,47,0,0" Height="29"/>
                     <TextBox HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="167" Margin="10,50,0,0"/>
