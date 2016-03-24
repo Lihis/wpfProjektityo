@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<urheilutalo>
+  <asiakas>
+    <AID> 001</AID>
+    <Nimi>Jori Jalkanen</Nimi>
+    <Osoite>Wolffintie 11 A9</Osoite>
+    <PostNum>65200</PostNum>
+    <Postitoimipaik>Vaasa</Postitoimipaik>
+    <Email>jokkeri92@gmail.com</Email>
+    <Puh>0405019602</Puh>
+    <tyyppi>Yksityinen</tyyppi>
+  </asiakas>
+  <asiakas>
+    <AID> 002</AID>
+    <Nimi>Lemonsoft</Nimi>
+    <Osoite>PL 1000</Osoite>
+    <PostNum>65100</PostNum>
+    <Postitoimipaik>Vaasa</Postitoimipaik>
+    <Email>info@lemonsoft.fi</Email>
+    <Puh>0103281000</Puh>
+    <tyyppi>Yritys</tyyppi>
+  </asiakas>
+  <asiakas>
+    <AID> 003</AID>
+    <Nimi>Teemu Selänne</Nimi>
+    <Osoite>Kirkkokatu 1</Osoite>
+    <PostNum>65100</PostNum>
+    <Postitoimipaik>Vaasa</Postitoimipaik>
+    <Email>Selanne8@8.com</Email>
+    <Puh>0502152816</Puh>
+    <tyyppi>Yksityinen</tyyppi>
+  </asiakas>
+</urheilutalo>
