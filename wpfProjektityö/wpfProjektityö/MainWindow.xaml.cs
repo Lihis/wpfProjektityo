@@ -53,7 +53,7 @@ namespace wpfProjektityö
 
         void haeTilat()
         {
-            XmlReader reader = XmlReader.Create(@"Resources\tietokanta.xml");
+            XmlReader reader = XmlReader.Create(@"Resources\salit.xml");
 
             while (reader.Read())
             {
