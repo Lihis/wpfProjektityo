@@ -105,12 +105,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\tietokanta.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Resource Include="Resources\XMLasiakas.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\XMLasiakas.xml" />
+    <Resource Include="Resources\salit.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\varaukset.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Varaukset>
+  <Varaus>
+    <AsiakasID>001</AsiakasID>
+    <SaliID>1</SaliID>
+    <Pvm>27.03.2016</Pvm>
+    <AlkuAika>10:00</AlkuAika>
+    <LoppuAika>11:00</LoppuAika>
+  </Varaus>
+</Varaukset>
