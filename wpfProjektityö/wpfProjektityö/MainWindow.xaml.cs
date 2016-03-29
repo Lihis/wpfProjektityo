@@ -38,20 +38,37 @@ namespace wpfProjektityö
 
         void haeAsiakkaat()
         {
+            XmlReader reader = XmlReader.Create(@"Resources\XMLasiakas.xml");
 
-            var gridView = new GridView();
-            //this.lstAsiakas.View = gridView;
-            gridView.Columns.Add(new GridViewColumn
+            while (reader.Read())
             {
-                Header = "Id",
-                DisplayMemberBinding = new Binding("Id")
-            });
-            gridView.Columns.Add(new GridViewColumn
-            {
-                Header = "Name",
-                DisplayMemberBinding = new Binding("Name")
-            });
-            //this.lstAsiakas.Items.Add(new { Id = 1, Name = "David" });
+                reader.MoveToContent();
+
+                if (reader.NodeType == XmlNodeType.Element &&
+                    reader.Name == "asiakas")
+                {
+                    reader.Read();
+                    lstAsiakas.Items.Add(reader.Value);
+           
+     
+                    
+                    var gridView = new GridView();                  
+                    this.lstAsiakas.View = gridView;
+                    gridView.Columns.Add(new GridViewColumn
+                    {
+                        Header = lstNimi.Header,
+                        DisplayMemberBinding = new Binding("AID")
+
+                    });
+                    gridView.Columns.Add(new GridViewColumn
+                    {
+                        Header = lstNimi.Header,
+                        DisplayMemberBinding = new Binding("Nimi")
+                    });
+                    this.lstAsiakas.Items.Add(new { AID = "AID" , Nimi = "David" });
+                }                     
+            }
+            reader.Close();
         }
 
         // Haetaan tilat/salit listboxiin
