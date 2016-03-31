@@ -38,34 +38,34 @@
                             <Label Content="LA" Grid.Column="6" Grid.Row="0" HorizontalAlignment="Center"></Label>
                             <Label Content="SU" Grid.Column="7" Grid.Row="0" HorizontalAlignment="Center"></Label>
                             <StackPanel Grid.Column="0" Grid.Row="1">
-                                <Label>09:00-09:30</Label>
-                                <Label>09:30-10:00</Label>
-                                <Label>10:00-10:30</Label>
-                                <Label>10:30-11:00</Label>
-                                <Label>11:00-11:30</Label>
-                                <Label>11:30-12:00</Label>
-                                <Label>12:00-12:30</Label>
-                                <Label>12:30-13:00</Label>
-                                <Label>13:00-13:30</Label>
-                                <Label>13:30-14:00</Label>
-                                <Label>14:00-14:30</Label>
-                                <Label>14:30-15:00</Label>
-                                <Label>15:00-15:30</Label>
-                                <Label>15:30-16:00</Label>
-                                <Label>16:00-16:30</Label>
-                                <Label>16:30-17:00</Label>
-                                <Label>17:00-17:30</Label>
-                                <Label>17:30-18:00</Label>
-                                <Label>18:00-18:30</Label>
-                                <Label>18:30-19:00</Label>
-                                <Label>19:00-19:30</Label>
-                                <Label>19:30-20:00</Label>
-                                <Label>20:00-20:30</Label>
-                                <Label>20:30-21:00</Label>
-                                <Label>21:00-21:30</Label>
-                                <Label>21:30-22:00</Label>
+                                <Label Height="25">09:00-09:30</Label>
+                                <Label Height="25">09:30-10:00</Label>
+                                <Label Height="25">10:00-10:30</Label>
+                                <Label Height="25">10:30-11:00</Label>
+                                <Label Height="25">11:00-11:30</Label>
+                                <Label Height="25">11:30-12:00</Label>
+                                <Label Height="25">12:00-12:30</Label>
+                                <Label Height="25">12:30-13:00</Label>
+                                <Label Height="25">13:00-13:30</Label>
+                                <Label Height="25">13:30-14:00</Label>
+                                <Label Height="25">14:00-14:30</Label>
+                                <Label Height="25">14:30-15:00</Label>
+                                <Label Height="25">15:00-15:30</Label>
+                                <Label Height="25">15:30-16:00</Label>
+                                <Label Height="25">16:00-16:30</Label>
+                                <Label Height="25">16:30-17:00</Label>
+                                <Label Height="25">17:00-17:30</Label>
+                                <Label Height="25">17:30-18:00</Label>
+                                <Label Height="25">18:00-18:30</Label>
+                                <Label Height="25">18:30-19:00</Label>
+                                <Label Height="25">19:00-19:30</Label>
+                                <Label Height="25">19:30-20:00</Label>
+                                <Label Height="25">20:00-20:30</Label>
+                                <Label Height="25">20:30-21:00</Label>
+                                <Label Height="25">21:00-21:30</Label>
+                                <Label Height="25">21:30-22:00</Label>
                             </StackPanel>
-                            <ListBox Name="lstMaanantai" Grid.Row="1" Grid.Column="1" SelectionMode="Extended">
+                            <ListBox Name="lstMaanantai" Grid.Row="1" Grid.Column="1" SelectionMode="Extended" SelectionChanged="listalaatikko_SelectionChanged">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="ListBoxItem">
                                         <Setter Property="Height" Value="25"/>
@@ -73,7 +73,6 @@
                                         <Setter Property="BorderThickness" Value="1"/>
                                     </Style>
                                 </ListBox.ItemContainerStyle>
-                                <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
@@ -101,7 +100,7 @@
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                             </ListBox>
-                            <ListBox Name="lstTiistai" Grid.Column="2" Grid.Row="1">
+                            <ListBox Name="lstTiistai" Grid.Column="2" Grid.Row="1" SelectionMode="Extended" SelectionChanged="listalaatikko_SelectionChanged">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="ListBoxItem">
                                         <Setter Property="Height" Value="25"/>
@@ -109,7 +108,6 @@
                                         <Setter Property="BorderThickness" Value="1"/>
                                     </Style>
                                 </ListBox.ItemContainerStyle>
-                                <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
@@ -137,7 +135,7 @@
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                             </ListBox>
-                            <ListBox Name="lstKeskiviikko" Grid.Column="3" Grid.Row="1">
+                            <ListBox Name="lstKeskiviikko" Grid.Column="3" Grid.Row="1" SelectionMode="Extended" SelectionChanged="listalaatikko_SelectionChanged">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="ListBoxItem">
                                         <Setter Property="Height" Value="25"/>
@@ -145,7 +143,6 @@
                                         <Setter Property="BorderThickness" Value="1"/>
                                     </Style>
                                 </ListBox.ItemContainerStyle>
-                                <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
@@ -173,7 +170,7 @@
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                             </ListBox>
-                            <ListBox Name="lstTorstai" Grid.Column="4" Grid.Row="1">
+                            <ListBox Name="lstTorstai" Grid.Column="4" Grid.Row="1" SelectionMode="Extended" SelectionChanged="listalaatikko_SelectionChanged">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="ListBoxItem">
                                         <Setter Property="Height" Value="25"/>
@@ -181,7 +178,6 @@
                                         <Setter Property="BorderThickness" Value="1"/>
                                     </Style>
                                 </ListBox.ItemContainerStyle>
-                                <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
@@ -209,7 +205,7 @@
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                             </ListBox>
-                            <ListBox Name="lstPerjantai" Grid.Column="5" Grid.Row="1">
+                            <ListBox Name="lstPerjantai" Grid.Column="5" Grid.Row="1" SelectionMode="Extended" SelectionChanged="listalaatikko_SelectionChanged">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="ListBoxItem">
                                         <Setter Property="Height" Value="25"/>
@@ -217,7 +213,6 @@
                                         <Setter Property="BorderThickness" Value="1"/>
                                     </Style>
                                 </ListBox.ItemContainerStyle>
-                                <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
@@ -245,7 +240,7 @@
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                             </ListBox>
-                            <ListBox Name="lstLauantai" Grid.Column="6" Grid.Row="1">
+                            <ListBox Name="lstLauantai" Grid.Column="6" Grid.Row="1" SelectionMode="Extended" SelectionChanged="listalaatikko_SelectionChanged">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="ListBoxItem">
                                         <Setter Property="Height" Value="25"/>
@@ -253,7 +248,6 @@
                                         <Setter Property="BorderThickness" Value="1"/>
                                     </Style>
                                 </ListBox.ItemContainerStyle>
-                                <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
@@ -281,7 +275,7 @@
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                             </ListBox>
-                            <ListBox Name="lstSunnuntai" Grid.Column="7" Grid.Row="1">
+                            <ListBox Name="lstSunnuntai" Grid.Column="7" Grid.Row="1" SelectionMode="Extended" SelectionChanged="listalaatikko_SelectionChanged">
                                 <ListBox.ItemContainerStyle>
                                     <Style TargetType="ListBoxItem">
                                         <Setter Property="Height" Value="25"/>
@@ -289,7 +283,6 @@
                                         <Setter Property="BorderThickness" Value="1"/>
                                     </Style>
                                 </ListBox.ItemContainerStyle>
-                                <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
                                 <ListBoxItem></ListBoxItem>
@@ -319,7 +312,7 @@
                             </ListBox>
                         </Grid>
                     </Border>
-                    <Button Content="Tee varaus" HorizontalAlignment="Left" Margin="178,729,0,0" VerticalAlignment="Top" Width="80" Height="40"/>
+                    <Button Name="teeVaraus" Content="Tee varaus" HorizontalAlignment="Left" Margin="178,729,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="teeVaraus_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Asiakas" HorizontalAlignment="Left" Width="55">

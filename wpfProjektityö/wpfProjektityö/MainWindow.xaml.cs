@@ -90,140 +90,27 @@ namespace wpfProjektityö
             reader.Close();
         }
 
-        // Palauttaa itemin indexin ListBox:ssa kysytylle kellon-ajalle
-        int haePositio(string kellonaika)
-        {
-            if (kellonaika == "9:00")
-            {
-                return 0;
-            }
-            else if (kellonaika == "9:30")
-            {
-                return 1;
-            }
-            else if (kellonaika == "10:00")
-            {
-                return 2;
-            }
-            else if (kellonaika == "10:30")
-            {
-                return 3;
-            }
-            else if (kellonaika == "11:00")
-            {
-                return 4;
-            }
-            else if (kellonaika == "11:30")
-            {
-                return 5;
-            }
-            else if (kellonaika == "12:00")
-            {
-                return 6;
-            }
-            else if (kellonaika == "12:30")
-            {
-                return 7;
-            }
-            else if (kellonaika == "13:00")
-            {
-                return 8;
-            }
-            else if (kellonaika == "13:30")
-            {
-                return 9;
-            }
-            else if (kellonaika == "14:00")
-            {
-                return 10;
-            }
-            else if (kellonaika == "14:30")
-            {
-                return 11;
-            }
-            else if (kellonaika == "15:00")
-            {
-                return 12;
-            }
-            else if (kellonaika == "15:30")
-            {
-                return 13;
-            }
-            else if (kellonaika == "16:00")
-            {
-                return 14;
-            }
-            else if (kellonaika == "16:30")
-            {
-                return 15;
-            }
-            else if (kellonaika == "17:00")
-            {
-                return 16;
-            }
-            else if (kellonaika == "17:30")
-            {
-                return 17;
-            }
-            else if (kellonaika == "18:00")
-            {
-                return 18;
-            }
-            else if (kellonaika == "18:30")
-            {
-                return 19;
-            }
-            else if (kellonaika == "19:00")
-            {
-                return 20;
-            }
-            else if (kellonaika == "19:30")
-            {
-                return 21;
-            }
-            else if (kellonaika == "20:00")
-            {
-                return 22;
-            }
-            else if (kellonaika == "20:30")
-            {
-                return 23;
-            }
-            else if (kellonaika == "21:00")
-            {
-                return 24;
-            }
-            else if (kellonaika == "21:30")
-            {
-                return 25;
-            }
-            else if (kellonaika == "22:00")
-            {
-                return 26;
-            }
-
-            return -1;
-        }
-
         // Laskee itemin korkeuden halutulle varaus ajalle
         int laskeKorkeus(int alkuaika, int loppuaika)
         {
             int erotus = loppuaika - alkuaika;
 
-            // 25 = puolituntia
+            // 25 = puolituntia (erotus on 1)
+            // 50 = tunti (erotus on 2) jne.
             return (erotus * 25);
         }
 
         // Varaukset varaukset.xml:stä listalaatikkoihin
         void haeVaraukset(DateTime monday)
         {
-            // Hae varaukset
             XmlReader reader = XmlReader.Create(@"Resources\varaukset.xml");
             DateTime date = DateTime.MinValue;
             ListBox päivä = null;
             ListViewItem item = null;
-            int alkuaika = -1, loppuaika = -1;
+            string varauksenNimi = null;
+            int alkuaika = -1, loppuaika = -1, varauksenID = -1;
 
+            // Hae varaukset
             while (reader.Read())
             {
                 reader.MoveToContent();
@@ -234,87 +121,62 @@ namespace wpfProjektityö
                     reader.Read();
 
                     date = DateTime.Parse(reader.Value, new CultureInfo("fi-FI"));
+                    // TODO: Näytä vain kuluvan viikon varaukset
                     int dayOfWeek = (int)date.DayOfWeek;
 
                     // 0 = sunnuntai
                     if (dayOfWeek == 0)
                     {
                         päivä = lstSunnuntai;
-                        item = new ListViewItem();
-                        // TODO: What to tag?
-                        item.Tag = "hidden";
-                        // TODO: Text??
-                        item.Content = "Sunnuntai";
-                        item.IsEnabled = true;
-                        item.MouseLeftButtonUp += ListBoxItem_MouseLeftButtonUp;
                     }
                     // 1 = maanantai
                     else if (dayOfWeek == 1)
                     {
                         päivä = lstMaanantai;
-                        item = new ListViewItem();
-                        // TODO: What to tag?
-                        item.Tag = "hidden";
-                        // TODO: Text??
-                        item.Content = "Maanantai";
-                        item.IsEnabled = true;
-                        item.MouseLeftButtonUp += ListBoxItem_MouseLeftButtonUp;
                     }
                     // 2 = tiistai
                     else if (dayOfWeek == 2)
                     {
                         päivä = lstMaanantai;
-                        item = new ListViewItem();
-                        // TODO: What to tag?
-                        item.Tag = "hidden";
-                        // TODO: Text??
-                        item.Content = "Tiistai";
-                        item.MouseLeftButtonUp += ListBoxItem_MouseLeftButtonUp;
                     }
                     // 3 = keskiviikko
                     else if (dayOfWeek == 3)
                     {
                         päivä = lstMaanantai;
-                        item = new ListViewItem();
-                        // TODO: What to tag?
-                        item.Tag = "hidden";
-                        // TODO: Text??
-                        item.Content = "Keskiviikko";
-                        item.MouseLeftButtonUp += ListBoxItem_MouseLeftButtonUp;
                     }
                     // 4 = torstai
                     else if (dayOfWeek == 4)
                     {
                         päivä = lstMaanantai;
-                        item = new ListViewItem();
-                        // TODO: What to tag?
-                        item.Tag = "hidden";
-                        // TODO: Text??
-                        item.Content = "Torstai";
-                        item.MouseLeftButtonUp += ListBoxItem_MouseLeftButtonUp;
                     }
                     // 5 perjantai
                     else if (dayOfWeek == 5)
                     {
                         päivä = lstMaanantai;
-                        item = new ListViewItem();
-                        // TODO: What to tag?
-                        item.Tag = "hidden";
-                        // TODO: Text??
-                        item.Content = "Perjatai";
-                        item.MouseLeftButtonUp += ListBoxItem_MouseLeftButtonUp;
                     }
                     // 6 = lauantai
                     else if (dayOfWeek == 6)
                     {
                         päivä = lstMaanantai;
-                        item = new ListViewItem();
-                        // TODO: What to tag?
-                        item.Tag = "hidden";
-                        // TODO: Text??
-                        item.Content = "Lauantai";
-                        item.MouseLeftButtonUp += ListBoxItem_MouseLeftButtonUp;
                     }
+                }
+
+                // Varauksen nimi ("otsikko")
+                if (reader.NodeType == XmlNodeType.Element &&
+                    reader.Name == "Nimi")
+                {
+                    reader.Read();
+
+                    varauksenNimi = reader.Value;
+                }
+
+                // Varauksen ID
+                if (reader.NodeType == XmlNodeType.Element &&
+                    reader.Name == "VarausID")
+                {
+                    reader.Read();
+
+                    varauksenID = int.Parse(reader.Value);
                 }
 
                 // Varauksen alkuaika
@@ -323,7 +185,7 @@ namespace wpfProjektityö
                 {
                     reader.Read();
 
-                    alkuaika = haePositio(reader.Value);
+                    alkuaika = positiot.haePositio(reader.Value);
                 }
 
                 // Varauksen loppuaika
@@ -332,11 +194,11 @@ namespace wpfProjektityö
                 {
                     reader.Read();
 
-                    loppuaika = haePositio(reader.Value);
+                    loppuaika = positiot.haePositio(reader.Value);
                 }
 
                 // Lisää itemi listaan kun tarvittavat tiedot luettu XML:stä
-                if (alkuaika != -1 && loppuaika != -1 && item != null)
+                if (alkuaika != -1 && loppuaika != -1 && varauksenID != -1 && varauksenNimi != null)
                 {
                     // Poista tarvittavat itemit
                     if (alkuaika == loppuaika)
@@ -351,6 +213,14 @@ namespace wpfProjektityö
                         }
                     }
 
+                    /* Itemin luominen */
+                    item = new ListViewItem();
+                    // Itemin teksti ("otsikko") joka näkyy ListBox:ssa
+                    item.Content = varauksenNimi;
+                    // Itemin tagi
+                    item.Tag = varauksenID;
+                    // Itemin Klikkaus-eventti
+                    item.MouseLeftButtonUp += ListBoxItem_MouseLeftButtonUp;
                     // Itemin korkeus
                     item.Height = laskeKorkeus(alkuaika, loppuaika);
 
@@ -358,6 +228,7 @@ namespace wpfProjektityö
                     päivä.Items.Insert(alkuaika, item);
 
                     // "Tyhjennä" muuttujat
+                    varauksenNimi = null;
                     alkuaika = -1;
                     loppuaika = -1;
                     item = null;
@@ -365,10 +236,111 @@ namespace wpfProjektityö
             }
         }
 
+        // Näytä "Lisää varaus"-ikkuna kun ListBox:n itemiä klikataan
+        // TODO: Mitä välitetään ikkunalla kun se avataan
         private void ListBoxItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            // Santerin ikkuna
-            MessageBox.Show("jee!");
+            // Vanhan varauksen tiedot
+            //Window varausIkkuna = new LisääVarausWindow("Varauksen tiedot");
+            //varausIkkuna.ShowDialog();
+            // TODO: Päivitä viikkonäkymä
+            //MessageBox.Show("Yay, we're back!");
+            //haeVaraukset(DateTime.Today.AddDays(-(DateTime.Today.DayOfWeek - DayOfWeek.Monday)));
+        }
+
+        // Näytä "Lisää varaus"-ikkuna kun ListBox:n itemiä klikataan
+        // "Lisää varaus" ikkunalle välitetään ListBox jossa on aika/aikaväli valittuna
+        private void teeVaraus_Click(object sender, RoutedEventArgs e)
+        {
+            ListBox listalaatikko = null;
+
+            if (lstMaanantai.SelectedIndex != -1)
+            {
+                listalaatikko = lstMaanantai;
+            }
+            else if (lstTiistai.SelectedIndex != -1)
+            {
+                listalaatikko = lstTiistai;
+            }
+            else if (lstKeskiviikko.SelectedIndex != -1)
+            {
+                listalaatikko = lstKeskiviikko;
+            }
+            else if (lstTorstai.SelectedIndex != -1)
+            {
+                listalaatikko = lstTorstai;
+            }
+            else if (lstPerjantai.SelectedIndex != -1)
+            {
+                listalaatikko = lstPerjantai;
+            }
+            else if (lstLauantai.SelectedIndex != -1)
+            {
+                listalaatikko = lstLauantai;
+            }
+            else if (lstSunnuntai.SelectedIndex != -1)
+            {
+                listalaatikko = lstSunnuntai;
+            }
+            else
+            {
+                MessageBox.Show("Valitse ensin varattava aika!");
+            }
+
+            // Näytä Varaus-ikkuna vain jos varattava aika valittu
+            if (listalaatikko != null)
+            {
+                // Uusi varaus
+                Window varausIkkuna = new LisääVarausWindow(listalaatikko);
+                varausIkkuna.ShowDialog();
+                // TODO: Päivitä viikkonäkymä
+            }
+        }
+
+        void listBox_SelectionChange(bool poista)
+        {
+            ListBox[] laatikot = { lstMaanantai, lstTiistai, lstKeskiviikko, lstTorstai, lstPerjantai, lstLauantai, lstSunnuntai };
+
+            if (poista == true)
+            {
+                foreach (ListBox element in laatikot)
+                {
+                    element.SelectionChanged -= listalaatikko_SelectionChanged;
+                }
+            }
+            else
+            {
+                foreach (ListBox element in laatikot)
+                {
+                    element.SelectionChanged += listalaatikko_SelectionChanged;
+                }
+            }
+        }
+
+        // Nollaa valinnat muilta päiviltä kun valitaan jokin toinen päivä
+        void nollaaListalaatikkojenValinnat(ListBox listalaatikko)
+        {
+            ListBox[] laatikot = { lstMaanantai, lstTiistai, lstKeskiviikko, lstTorstai, lstPerjantai, lstLauantai, lstSunnuntai };
+
+            // Poista SelectionChanged event jotta uutta valintaa ei poisteta seuraavassa loopissa
+            listBox_SelectionChange(true);
+
+            // Poista valinnat muista kuin juuri valitusta ListBox:sta
+            foreach(ListBox element in laatikot)
+            {
+                if (element != listalaatikko)
+                {
+                    element.SelectedIndex = -1;
+                }
+            }
+
+            // Ota SelectionChanged käyttöön uudelleen
+            listBox_SelectionChange(false);
+        }
+
+        private void listalaatikko_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            nollaaListalaatikkojenValinnat((sender as ListBox));
         }
     }
 }
