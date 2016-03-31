@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          Title="Lisää varaus" Height="399.75" Width="525" Loaded="Window_Loaded">
     <Grid Margin="0,0,-8,-3">
-        <TextBox HorizontalAlignment="Left" Height="24" Margin="20,43,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160"/>
+        <TextBox Name="txtVarauksenNimi" HorizontalAlignment="Left" Height="24" Margin="20,43,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160"/>
         <Label Content="Varauksen nimi" HorizontalAlignment="Left" Height="28" Margin="20,10,0,0" VerticalAlignment="Top" Width="160"/>
         <Label Content="Ajankohta" HorizontalAlignment="Left" Height="26" Margin="20,72,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.44,0.438"/>
         <ComboBox Name="cmbAlkuAika" HorizontalAlignment="Left" Margin="25,100,0,0" VerticalAlignment="Top" Width="56">
@@ -66,18 +66,18 @@
         <TextBox HorizontalAlignment="Left" Height="29" Margin="180,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"/>
         <Label Content="Päivämäärä" HorizontalAlignment="Left" Height="23" Margin="180,72,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Varaajan nimi" HorizontalAlignment="Left" Height="25" Margin="20,147,0,0" VerticalAlignment="Top" Width="83"/>
-        <TextBox HorizontalAlignment="Left" Height="24" Margin="20,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <TextBox Name="txtHaeVaraajanNimellä" HorizontalAlignment="Left" Height="24" Margin="20,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
         <Button Content="Hae tietokannasta" HorizontalAlignment="Left" Height="24" Margin="210,172,0,0" VerticalAlignment="Top" Width="105"/>
         <Label Content="Varaajan nimi" HorizontalAlignment="Left" Height="29" Margin="20,211,0,0" VerticalAlignment="Top" Width="130"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="20,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <TextBox Name="txtVaraajanNimi" HorizontalAlignment="Left" Height="25" Margin="20,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
         <Label Content="Postinumero" HorizontalAlignment="Left" Height="29" Margin="210,211,0,0" VerticalAlignment="Top" Width="77"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="210,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"/>
+        <TextBox Name="txtPostinumero" HorizontalAlignment="Left" Height="25" Margin="210,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"/>
         <Label Content="Puhelinnumero" HorizontalAlignment="Left" Height="23" Margin="20,270,0,0" VerticalAlignment="Top" Width="142"/>
-        <TextBox HorizontalAlignment="Left" Height="27" Margin="20,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
+        <TextBox Name="txtPuhNro" HorizontalAlignment="Left" Height="27" Margin="20,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
         <Label Content="Postiosoite" HorizontalAlignment="Left" Height="23" Margin="210,270,0,0" VerticalAlignment="Top" Width="77"/>
-        <TextBox HorizontalAlignment="Left" Height="27" Margin="189,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <TextBox Name="txtPositosoite" HorizontalAlignment="Left" Height="27" Margin="189,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
         <Label Content="Postitoimipaikka" HorizontalAlignment="Left" Height="29" Margin="339,211,0,0" VerticalAlignment="Top" Width="101"/>
-        <TextBox HorizontalAlignment="Left" Height="25" Margin="334,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106"/>
+        <TextBox Name="txtPostitoimipaikka" HorizontalAlignment="Left" Height="25" Margin="334,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106"/>
         <Button Name="btnPeruuta" Content="Peruuta" HorizontalAlignment="Left" Height="28" Margin="266,325,0,0" VerticalAlignment="Top" Width="93" Click="btnPeruuta_Click"/>
         <Button Content="Tee varaus" HorizontalAlignment="Left" Height="28" Margin="386,325,0,0" VerticalAlignment="Top" Width="100"/>
         <Button Content="Lisää asiakas" HorizontalAlignment="Left" Height="24" Margin="377,284,0,0" VerticalAlignment="Top" Width="109"/>
