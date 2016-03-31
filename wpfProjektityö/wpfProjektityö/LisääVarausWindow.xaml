@@ -63,7 +63,7 @@
             <ComboBoxItem Content="21:30"/>
             <ComboBoxItem Content="22:00"/>
         </ComboBox>
-        <TextBox HorizontalAlignment="Left" Height="29" Margin="180,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"/>
+        <TextBox Name="txtPvm" HorizontalAlignment="Left" Height="29" Margin="180,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"/>
         <Label Content="Päivämäärä" HorizontalAlignment="Left" Height="23" Margin="180,72,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Varaajan nimi" HorizontalAlignment="Left" Height="25" Margin="20,147,0,0" VerticalAlignment="Top" Width="83"/>
         <TextBox Name="txtHaeVaraajanNimellä" HorizontalAlignment="Left" Height="24" Margin="20,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
@@ -75,7 +75,7 @@
         <Label Content="Puhelinnumero" HorizontalAlignment="Left" Height="23" Margin="20,270,0,0" VerticalAlignment="Top" Width="142"/>
         <TextBox Name="txtPuhNro" HorizontalAlignment="Left" Height="27" Margin="20,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"/>
         <Label Content="Postiosoite" HorizontalAlignment="Left" Height="23" Margin="210,270,0,0" VerticalAlignment="Top" Width="77"/>
-        <TextBox Name="txtPositosoite" HorizontalAlignment="Left" Height="27" Margin="189,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <TextBox Name="txtPostiosoite" HorizontalAlignment="Left" Height="27" Margin="189,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
         <Label Content="Postitoimipaikka" HorizontalAlignment="Left" Height="29" Margin="339,211,0,0" VerticalAlignment="Top" Width="101"/>
         <TextBox Name="txtPostitoimipaikka" HorizontalAlignment="Left" Height="25" Margin="334,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106"/>
         <Button Name="btnPeruuta" Content="Peruuta" HorizontalAlignment="Left" Height="28" Margin="266,325,0,0" VerticalAlignment="Top" Width="93" Click="btnPeruuta_Click"/>
