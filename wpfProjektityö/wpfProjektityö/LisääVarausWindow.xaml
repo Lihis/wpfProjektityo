@@ -66,7 +66,7 @@
         <TextBox Name="txtPvm" HorizontalAlignment="Left" Height="29" Margin="180,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" IsEnabled="False"/>
         <Label Content="Päivämäärä" HorizontalAlignment="Left" Height="23" Margin="180,72,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Hae varaaja" HorizontalAlignment="Left" Height="25" Margin="25,154,0,0" VerticalAlignment="Top" Width="83"/>
-        <TextBox Name="txtHaeVaraajanNimellä" HorizontalAlignment="Left" Height="24" Margin="25,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <TextBox Name="txtHaeVaraajanNimellä" HorizontalAlignment="Left" Height="24" Margin="25,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142" KeyDown="txtHaeVaraajanNimellä_KeyDown"/>
         <Button Name="btnHaeAsiaksTietokannasta" Content="Hae tietokannasta" HorizontalAlignment="Left" Height="24" Margin="189,179,0,0" VerticalAlignment="Top" Width="105" Click="btnHaeAsiaksTietokannasta_Click"/>
         <Label Content="Varaajan nimi" HorizontalAlignment="Left" Height="29" Margin="25,211,0,0" VerticalAlignment="Top" Width="130"/>
         <TextBox Name="txtVaraajanNimi" HorizontalAlignment="Left" Height="25" Margin="25,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>

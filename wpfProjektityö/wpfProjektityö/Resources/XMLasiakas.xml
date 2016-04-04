@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <urheilutalo>
   <asiakas>
-    <AID>001</AID>
+    <AID>1</AID>
     <Nimi>Jori Jalkanen</Nimi>
     <Osoite>Wolffintie 11 A9</Osoite>
     <PostNum>65200</PostNum>
@@ -11,7 +11,7 @@
     <tyyppi>Yksityinen</tyyppi>
   </asiakas>
   <asiakas>
-    <AID>002</AID>
+    <AID>2</AID>
     <Nimi>Lemonsoft</Nimi>
     <Osoite>PL 1000</Osoite>
     <PostNum>65100</PostNum>
@@ -21,7 +21,7 @@
     <tyyppi>Yritys</tyyppi>
   </asiakas>
   <asiakas>
-    <AID>003</AID>
+    <AID>3</AID>
     <Nimi>Teemu Selänne</Nimi>
     <Osoite>Kirkkokatu 1</Osoite>
     <PostNum>65100</PostNum>

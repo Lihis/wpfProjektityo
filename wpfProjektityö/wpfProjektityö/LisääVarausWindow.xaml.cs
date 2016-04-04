@@ -62,9 +62,10 @@ namespace wpfProjektityö
                 this.Title = "Muokkaa varausta";
                 // Muuta napin teksti jos ollaan muokkaamassa varausta
                 btnTeeVaraus.Content = "Tallenna";
-                // Disable "Lisää varaus" -nappi
-                //btnTeeVaraus.IsEnabled = false;
+                // Hae varauksen tiedot
                 haeVarauksenTiedot(itemTag);
+                // Hae asiakkaan tiedot
+                haeAsiakkaanTiedot();
             }
             else
             {
@@ -136,9 +137,13 @@ namespace wpfProjektityö
                 }
             }
             reader.Close();
+        }
 
+        void haeAsiakkaanTiedot()
+        {
             // Hae asiakkaan tiedot
-            reader = XmlReader.Create(@"Resources\XMLasiakas.xml");
+            XmlReader reader = XmlReader.Create(@"Resources\XMLasiakas.xml");
+
             while (reader.Read())
             {
                 reader.MoveToContent();
@@ -172,9 +177,17 @@ namespace wpfProjektityö
                                         reader.Read();
                                         txtPostitoimipaikka.Text = reader.Value;
                                         break;
+                                    case "Email":
+                                        reader.Read();
+                                        txtEmail.Text = reader.Value;
+                                        break;
                                     case "Puh":
                                         reader.Read();
                                         txtPuhNro.Text = reader.Value;
+                                        break;
+                                    case "tyyppi":
+                                        reader.Read();
+                                        txtTyyppi.Text = reader.Value;
                                         break;
                                     default:
                                         break;
@@ -184,7 +197,7 @@ namespace wpfProjektityö
                             // Lopeta lukeminen kun saavutaan </asiakas> lopetus tagiin
                             if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "asiakas")
                             {
-                                    break;
+                                break;
                             }
                         }
                         // Asiakkaan tiedot haettu -> lopeta lukeminen
@@ -195,14 +208,94 @@ namespace wpfProjektityö
             reader.Close();
         }
 
-        int lisääVaraus()
+        void haeAsiakkaanTiedotNimellä(string asiakkaanNimi)
         {
+            // Hae asiakkaan tiedot
+            XmlReader reader = XmlReader.Create(@"Resources\XMLasiakas.xml");
+
+            while (reader.Read())
+            {
+                reader.MoveToContent();
+
+                if (reader.NodeType == XmlNodeType.Element &&
+                    reader.Name == "AID")
+                {
+                    reader.Read();
+                    asiakasID = reader.Value;
+                }
+
+                if (reader.NodeType == XmlNodeType.Element &&
+                    reader.Name == "Nimi")
+                {
+                    // Lue kunnes ollaan halutun asiakkaan nimen kohdalla
+                    reader.Read();
+                    if (reader.Value == asiakkaanNimi)
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader.NodeType == XmlNodeType.Element)
+                            {
+                                switch (reader.Name)
+                                {
+                                    case "Osoite":
+                                        reader.Read();
+                                        txtPostiosoite.Text = reader.Value;
+                                        break;
+                                    case "PostNum":
+                                        reader.Read();
+                                        txtPostinumero.Text = reader.Value;
+                                        break;
+                                    case "Postitoimipaik":
+                                        reader.Read();
+                                        txtPostitoimipaikka.Text = reader.Value;
+                                        break;
+                                    case "Email":
+                                        reader.Read();
+                                        txtEmail.Text = reader.Value;
+                                        break;
+                                    case "Puh":
+                                        reader.Read();
+                                        txtPuhNro.Text = reader.Value;
+                                        break;
+                                    case "tyyppi":
+                                        reader.Read();
+                                        txtTyyppi.Text = reader.Value;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+
+                            // Lopeta lukeminen kun saavutaan </asiakas> lopetus tagiin
+                            if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "asiakas")
+                            {
+                                break;
+                            }
+                        }
+                        // Asiakkaan tiedot haettu -> lopeta lukeminen
+                        break;
+                    }
+                }
+            }
+            reader.Close();
+        }
+
+        void lisääVaraus()
+        {
+            // Tarkista että varauksella on nimi
+            if (string.IsNullOrWhiteSpace(txtVarauksenNimi.Text) || txtVarauksenNimi.Text.Length < 2)
+            {
+                MessageBox.Show("Varauksen nimen pitää olla vähintään kolme merkkiä pitkä.");
+                return;
+            }
+
             // Tarkista että varauksella on asiakas
-            if (asiakasID == null)
+            if (asiakasID == null || string.IsNullOrWhiteSpace(asiakasID))
             {
                 MessageBox.Show("Lisää varaukselle asiakas!");
-                return 1;
+                return;
             }
+
             string varausID = null, saliID = null, pvm = null, nimi = null, alkuaika = null, loppuaika = null;
             int tmpVarausID = -1;
 
@@ -226,7 +319,10 @@ namespace wpfProjektityö
             reader.Close();
 
             if (tmpVarausID < 0)
-                return 2;
+            {
+                MessageBox.Show("VarausID hakeminen epäonnistui.");
+                return;
+            }
             // Lisää yksi varausID:n koska ollaan tekemässä uutta varausta
             varausID = (tmpVarausID + 1).ToString();
 
@@ -288,7 +384,8 @@ namespace wpfProjektityö
             streamWriter.Close();
             fileStream.Close();
 
-            return 0;
+            MessageBox.Show("Varaus lisätty.");
+            this.Close();
         }
 
         int lisääAsiakas()
@@ -317,7 +414,7 @@ namespace wpfProjektityö
            
             if (tmpAsiakasID < 0)
                 return 1;
-            // Lisää yksi asikasID:n koska ollaan tekemässä uutta varausta
+            // Lisää yksi asikasID:n koska ollaan lisäämässä uutta asiakasta
             asiakasID = (tmpAsiakasID + 1).ToString();
 
             nimi = txtVaraajanNimi.Text;
@@ -387,9 +484,67 @@ namespace wpfProjektityö
             return 0;
         }
 
+        void haeAsiakasTietokannasta()
+        {
+            // Tarkista että on annettu nimi jota hakea (min. kolme merkkiä)
+            if (string.IsNullOrWhiteSpace(txtHaeVaraajanNimellä.Text) || txtHaeVaraajanNimellä.Text.Length < 2)
+            {
+                MessageBox.Show("Anna vähintään kolme merkkiä!");
+                return;
+            }
+
+            XmlReader reader = XmlReader.Create(@"Resources\XMLAsiakas.xml");
+            List<string> asiakkaanNimi = new List<string>();
+
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Element)
+                {
+                    switch (reader.Name)
+                    {
+                        case "Nimi":
+                            reader.Read();
+                            if (Regex.IsMatch(reader.Value, txtHaeVaraajanNimellä.Text, RegexOptions.IgnoreCase))
+                            {
+                                asiakkaanNimi.Add(reader.Value);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            reader.Close();
+
+            // Asiakkaita ei löytynyt
+            if (asiakkaanNimi.Count == 0)
+            {
+                MessageBox.Show("Asiakkaita ei löytynyt.");
+            }
+            // Asiakkaita löytyi enemmän kuin yksi, näytä MessageBox jossa löydetyt asiakkaat
+            else if (asiakkaanNimi.Count > 1)
+            {
+                string message = "Rajaa hakua, asiakkaita löytyi: " + asiakkaanNimi.Count.ToString() + " kpl.";
+
+                for (int i = 0; i < asiakkaanNimi.Count; i++)
+                {
+                    message += "\n" + asiakkaanNimi[i];
+                }
+                MessageBox.Show(message);
+            }
+            // Asiakkaita löytyi vain yksi joten hae tiedot
+            else
+            {
+                // Asiakkaan tiedot laatikoihin
+                haeAsiakkaanTiedotNimellä(asiakkaanNimi[0]);
+                txtVaraajanNimi.Text = asiakkaanNimi[0];
+            }
+        }
+
         // Varauksen lisääminen varaus.xml
         private void btnTeeVaraus_Click(object sender, RoutedEventArgs e)
         {
+
             // TODO: Varauksen muokkaamisen implementointi?
             if (itemTag != null)
             {
@@ -398,14 +553,7 @@ namespace wpfProjektityö
             }
 
             // Lisää varaus XML:ään
-            if (lisääVaraus() != 0)
-            {
-                MessageBox.Show("Virhe varausta lisätessä! Varausta ei tehty.");
-            }
-            else
-            {
-                MessageBox.Show("Varaus lisätty.");
-            }
+            lisääVaraus();
         }
 
         // Asiakkaan lisääminen XMLasiakas.xml:lään
@@ -423,53 +571,13 @@ namespace wpfProjektityö
 
         private void btnHaeAsiaksTietokannasta_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Asiakkaan hakeminen nimellä
-            //MessageBox.Show("Not implented yet");
-            XmlReader reader = XmlReader.Create(@"Resources\XMLAsiakas.xml");
-            string[] asiakkaanNimi = new string[] { "" };
-            int asiakasLkm = 0;
-            Regex pattern = new Regex(txtHaeVaraajanNimellä.Text.ToUpper());
+            haeAsiakasTietokannasta();
+        }
 
-            while (reader.Read())
-            {
-                if (reader.NodeType == XmlNodeType.Element)
-                {
-                    switch (reader.Name)
-                    {
-                        case "Nimi":
-                            reader.Read();
-                            if (pattern.IsMatch(reader.Value.ToUpper()))
-                            {
-                                asiakkaanNimi[asiakasLkm] = reader.Value;
-                                asiakasLkm++;
-                            }
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-            reader.Close();
-
-            if (asiakkaanNimi.Length - 1 == 0)
-            {
-                MessageBox.Show("Asiakkaita ei löytynyt.");
-            }
-            else if (asiakkaanNimi.Length - 1 > 1)
-            {
-                string message = "Rajaa hakua, asiakkaita löytyi: " + asiakkaanNimi.Length.ToString() + " kpl.\n";
-
-                for (int i = 0; i < asiakkaanNimi.Length; i++)
-                {
-                    message += asiakkaanNimi[i] + "\n";
-                }
-                MessageBox.Show(message);
-            }
-            else
-            {
-                // TODO: Asiakkaan tiedot laatikoihin
-                MessageBox.Show("Asiakkaan nimi: " + asiakkaanNimi[0]);
-            }
+        private void txtHaeVaraajanNimellä_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                haeAsiakasTietokannasta();
         }
     }
 }
