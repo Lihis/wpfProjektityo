@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Urheilutalo>
   <Tila>
+    <ID>1</ID>
     <Nimi>Sali 1</Nimi>
+  </Tila>
+  <Tila>
+    <ID>2</ID>
+    <Nimi>Sali 2</Nimi>
   </Tila>
 </Urheilutalo>

@@ -2,11 +2,29 @@
 <Varaukset>
   <Varaus>
     <VarausID>1</VarausID>
-    <AsiakasID>001</AsiakasID>
     <SaliID>1</SaliID>
-    <Nimi>Sulkapallo</Nimi>
+    <AsiakasID>001</AsiakasID>
     <Pvm>27.03.2016</Pvm>
+    <Nimi>27.03.2016</Nimi>
     <AlkuAika>10:00</AlkuAika>
     <LoppuAika>11:00</LoppuAika>
+  </Varaus>
+  <Varaus>
+    <VarausID>2</VarausID>
+    <SaliID>1</SaliID>
+    <AsiakasID>001</AsiakasID>
+    <Pvm>28.03.2016</Pvm>
+    <Nimi>28.03.2016</Nimi>
+    <AlkuAika>10:00</AlkuAika>
+    <LoppuAika>11:30</LoppuAika>
+  </Varaus>
+  <Varaus>
+    <VarausID>3</VarausID>
+    <SaliID>1</SaliID>
+    <AsiakasID>001</AsiakasID>
+    <Pvm>03.04.2016</Pvm>
+    <Nimi>03.04.2016</Nimi>
+    <AlkuAika>12:00</AlkuAika>
+    <LoppuAika>14:30</LoppuAika>
   </Varaus>
 </Varaukset>

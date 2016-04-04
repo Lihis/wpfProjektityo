@@ -7,11 +7,11 @@
             <TabItem Header="Varaus">
                 <Grid Background="#FFE5E5E5">
                     <Border BorderBrush="Black" BorderThickness="1" Margin="10,10,1023,459">
-                        <ListBox x:Name="lstTilat" HorizontalAlignment="Left" Height="284" Margin="-1,27,-1,-1" VerticalAlignment="Top" Width="248"/>
+                        <ListBox x:Name="lstTilat" HorizontalAlignment="Left" Height="284" Margin="-1,27,-1,-1" VerticalAlignment="Top" Width="248" SelectionChanged="lstTilat_SelectionChanged"/>
                     </Border>
                     <Label Content="Tilat" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
                     <Border BorderBrush="Black" BorderThickness="1" Margin="10,327,1023,58">
-                        <Calendar Margin="9,32,9,9"/>
+                        <Calendar Name="kalenteri" Margin="9,32,9,9" SelectedDatesChanged="kalenteri_SelectedDatesChanged"/>
                     </Border>
                     <Label Content="Päivämäärä" HorizontalAlignment="Left" Margin="10,327,0,0" VerticalAlignment="Top" FontSize="14"/>
                     <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="713" Margin="263,10,0,0" VerticalAlignment="Top" Width="1008">
