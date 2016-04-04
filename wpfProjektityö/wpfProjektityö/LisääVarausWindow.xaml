@@ -73,9 +73,9 @@
         <Label Content="Postinumero" HorizontalAlignment="Left" Height="29" Margin="189,211,0,0" VerticalAlignment="Top" Width="77"/>
         <TextBox Name="txtPostinumero" HorizontalAlignment="Left" Height="25" Margin="189,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
         <Label Content="Puhelinnumero" HorizontalAlignment="Left" Height="23" Margin="189,270,0,0" VerticalAlignment="Top" Width="142"/>
-        <TextBox Name="txtPuhNro" HorizontalAlignment="Left" Height="27" Margin="25,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
+        <TextBox Name="txtPostiosoite" HorizontalAlignment="Left" Height="27" Margin="25,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142"/>
         <Label Content="Postiosoite" HorizontalAlignment="Left" Height="23" Margin="24,270,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="0.218,0.849"/>
-        <TextBox Name="txtPostiosoite" HorizontalAlignment="Left" Height="27" Margin="189,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <TextBox Name="txtPuhNro" HorizontalAlignment="Left" Height="27" Margin="189,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
         <Label Content="Postitoimipaikka" HorizontalAlignment="Left" Height="29" Margin="342,211,0,0" VerticalAlignment="Top" Width="101"/>
         <TextBox Name="txtPostitoimipaikka" HorizontalAlignment="Left" Height="25" Margin="342,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.902,0.608"/>
         <Button Name="btnPeruuta" Content="Peruuta" HorizontalAlignment="Left" Height="28" Margin="282,393,0,0" VerticalAlignment="Top" Width="93" Click="btnPeruuta_Click"/>
