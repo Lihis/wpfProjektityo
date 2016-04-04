@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 using System.Xml;
+using System.Text.RegularExpressions;
 
 namespace wpfProjektityö
 {
@@ -67,10 +68,10 @@ namespace wpfProjektityö
             }
             else
             {
-            cmbAlkuAika.SelectedIndex = valitutItemit.First();
-            cmbLoppuAika.SelectedIndex = valitutItemit.Last();
+                cmbAlkuAika.SelectedIndex = valitutItemit.First();
+                cmbLoppuAika.SelectedIndex = valitutItemit.Last();
                 txtPvm.Text = varausPvm;
-        }
+            }
         }
 
         // Hae varauksen ja asiakkaan tiedot "Lisää varaus"-ikkunaan
@@ -121,7 +122,7 @@ namespace wpfProjektityö
                                         reader.Read();
                                         cmbLoppuAika.SelectedIndex = positiot.haePositio(reader.Value) - 1;
                                         break;
-                }
+                                }
                             }
                             // Lopeta lukeminen kun saavutaan </varaus> lopetus tagiin
                             else if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "Varaus")
@@ -154,7 +155,7 @@ namespace wpfProjektityö
                             if (reader.NodeType == XmlNodeType.Element)
                             {
                                 switch (reader.Name)
-                {
+                                {
                                     case "Nimi":
                                         reader.Read();
                                         txtVaraajanNimi.Text = reader.Value;
@@ -172,7 +173,7 @@ namespace wpfProjektityö
                                         txtPostitoimipaikka.Text = reader.Value;
                                         break;
                                     case "Puh":
-                    reader.Read();
+                                        reader.Read();
                                         txtPuhNro.Text = reader.Value;
                                         break;
                                     default:
@@ -201,7 +202,7 @@ namespace wpfProjektityö
             {
                 MessageBox.Show("Lisää varaukselle asiakas!");
                 return 1;
-                }
+            }
             string varausID = null, saliID = null, pvm = null, nimi = null, alkuaika = null, loppuaika = null;
             int tmpVarausID = -1;
 
@@ -212,9 +213,9 @@ namespace wpfProjektityö
                 if (reader.NodeType == XmlNodeType.Element)
                 {
                     switch (reader.Name)
-                {
+                    {
                         case "VarausID":
-                    reader.Read();
+                            reader.Read();
                             int.TryParse(reader.Value, out tmpVarausID);
                             break;
                         default:
@@ -288,7 +289,7 @@ namespace wpfProjektityö
             fileStream.Close();
 
             return 0;
-                }
+        }
 
         int lisääAsiakas()
         {
@@ -302,9 +303,9 @@ namespace wpfProjektityö
                 if (reader.NodeType == XmlNodeType.Element)
                 {
                     switch (reader.Name)
-                {
+                    {
                         case "VarausID":
-                    reader.Read();
+                            reader.Read();
                             int.TryParse(reader.Value, out tmpAsiakasID);
                             break;
                         default:
@@ -394,7 +395,7 @@ namespace wpfProjektityö
             {
                 MessageBox.Show("Varauksen muokkausta ei ole implementoitu.");
                 return;
-                }
+            }
 
             // Lisää varaus XML:ään
             if (lisääVaraus() != 0)
@@ -402,7 +403,7 @@ namespace wpfProjektityö
                 MessageBox.Show("Virhe varausta lisätessä! Varausta ei tehty.");
             }
             else
-                {
+            {
                 MessageBox.Show("Varaus lisätty.");
             }
         }
@@ -418,13 +419,57 @@ namespace wpfProjektityö
             {
                 MessageBox.Show("Asiakas lisätty.");
             }
-                }
+        }
 
         private void btnHaeAsiaksTietokannasta_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Asiakkaan hakeminen nimellä
-            MessageBox.Show("Not implented yet");
+            //MessageBox.Show("Not implented yet");
+            XmlReader reader = XmlReader.Create(@"Resources\XMLAsiakas.xml");
+            string[] asiakkaanNimi = new string[] { "" };
+            int asiakasLkm = 0;
+            Regex pattern = new Regex(txtHaeVaraajanNimellä.Text.ToUpper());
+
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Element)
+                {
+                    switch (reader.Name)
+                    {
+                        case "Nimi":
+                            reader.Read();
+                            if (pattern.IsMatch(reader.Value.ToUpper()))
+                            {
+                                asiakkaanNimi[asiakasLkm] = reader.Value;
+                                asiakasLkm++;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            reader.Close();
+
+            if (asiakkaanNimi.Length - 1 == 0)
+            {
+                MessageBox.Show("Asiakkaita ei löytynyt.");
+            }
+            else if (asiakkaanNimi.Length - 1 > 1)
+            {
+                string message = "Rajaa hakua, asiakkaita löytyi: " + asiakkaanNimi.Length.ToString() + " kpl.\n";
+
+                for (int i = 0; i < asiakkaanNimi.Length; i++)
+                {
+                    message += asiakkaanNimi[i] + "\n";
+                }
+                MessageBox.Show(message);
+            }
+            else
+            {
+                // TODO: Asiakkaan tiedot laatikoihin
+                MessageBox.Show("Asiakkaan nimi: " + asiakkaanNimi[0]);
+            }
         }
     }
 }
-
