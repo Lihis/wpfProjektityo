@@ -54,19 +54,19 @@ namespace wpfProjektityö
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Jos itemTag ei ole null, halutaan hakea jo olemassa olevan varauksen tiedot
-            // muussa tapauksessa ollaan tekemässä uutta varausta
+            // Jos itemTag ei ole null, halutaan hakea jo olemassa olevan varauksen tiedot ...
             if (itemTag != null)
             {
-                // Muuta ikkunan teksti jos ollaan muokkaamassa varausta
+                // Muuta ikkunan teksti ja ..
                 this.Title = "Muokkaa varausta";
-                // Muuta napin teksti jos ollaan muokkaamassa varausta
+                // ..muuta napin teksti
                 btnTeeVaraus.Content = "Tallenna";
                 // Hae varauksen tiedot
                 haeVarauksenTiedot(itemTag);
                 // Hae asiakkaan tiedot
                 haeAsiakkaanTiedot();
             }
+            // ..muussa tapauksessa ollaan tekemässä uutta varausta
             else
             {
                 cmbAlkuAika.SelectedIndex = valitutItemit.First();
@@ -187,7 +187,14 @@ namespace wpfProjektityö
                                         break;
                                     case "tyyppi":
                                         reader.Read();
-                                        txtTyyppi.Text = reader.Value;
+                                        if (reader.Value == "Yksityinen")
+                                        {
+                                            cmbTyyppi.SelectedIndex = 0;
+                                        }
+                                        else
+                                        {
+                                            cmbTyyppi.SelectedIndex = 1;
+                                        }
                                         break;
                                     default:
                                         break;
@@ -259,7 +266,14 @@ namespace wpfProjektityö
                                         break;
                                     case "tyyppi":
                                         reader.Read();
-                                        txtTyyppi.Text = reader.Value;
+                                        if (reader.Value == "Yksityinen")
+                                        {
+                                            cmbTyyppi.SelectedIndex = 0;
+                                        }
+                                        else
+                                        {
+                                            cmbTyyppi.SelectedIndex = 1;
+                                        }
                                         break;
                                     default:
                                         break;
@@ -388,7 +402,7 @@ namespace wpfProjektityö
             this.Close();
         }
 
-        int lisääAsiakas()
+        void lisääAsiakas()
         {
             string asiakasID = null, nimi = null, osoite = null, postNum = null, postitoimipaik = null,
                 email = null, puhNro = null, tyyppi = null;
@@ -401,7 +415,7 @@ namespace wpfProjektityö
                 {
                     switch (reader.Name)
                     {
-                        case "VarausID":
+                        case "AID":
                             reader.Read();
                             int.TryParse(reader.Value, out tmpAsiakasID);
                             break;
@@ -413,7 +427,10 @@ namespace wpfProjektityö
             reader.Close();
            
             if (tmpAsiakasID < 0)
-                return 1;
+            {
+                MessageBox.Show("AsikasID hakeminen epäonnistui.");
+                return;
+            }
             // Lisää yksi asikasID:n koska ollaan lisäämässä uutta asiakasta
             asiakasID = (tmpAsiakasID + 1).ToString();
 
@@ -421,11 +438,17 @@ namespace wpfProjektityö
             osoite = txtPostiosoite.Text;
             postNum = txtPostinumero.Text;
             postitoimipaik = txtPostitoimipaikka.Text;
-            // TODO: Email kenttä
-            email = "asd@asd.fi";
+            email = txtEmail.Text;
             puhNro = txtPuhNro.Text;
-            // TODO: Tyyppi kenttä
-            tyyppi = "Yksityinen";
+            if (cmbTyyppi.SelectedIndex != -1)
+            {
+                tyyppi = ((ComboBoxItem)cmbTyyppi.SelectedItem).Content.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Valitse asiakkaan tyyppi.");
+                return;
+            }
 
             //// XML kirjoitus
             // XML lataus
@@ -481,7 +504,7 @@ namespace wpfProjektityö
             streamWriter.Close();
             fileStream.Close();
 
-            return 0;
+            MessageBox.Show("Asiakas lisätty.");
         }
 
         void haeAsiakasTietokannasta()
@@ -559,14 +582,8 @@ namespace wpfProjektityö
         // Asiakkaan lisääminen XMLasiakas.xml:lään
         private void btnLisääAsiakas_Click(object sender, RoutedEventArgs e)
         {
-            if (lisääAsiakas() != 0)
-            {
-                MessageBox.Show("Virhe asiakasta lisätessä! Asiakasta ei lisätty.");
-            }
-            else
-            {
-                MessageBox.Show("Asiakas lisätty.");
-            }
+            // Asiakkaan lisääminen
+            lisääAsiakas();
         }
 
         private void btnHaeAsiaksTietokannasta_Click(object sender, RoutedEventArgs e)
