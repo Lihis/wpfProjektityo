@@ -14,7 +14,7 @@
                         <Calendar Name="kalenteri" Margin="9,32,9,9" SelectedDatesChanged="kalenteri_SelectedDatesChanged"/>
                     </Border>
                     <Label Content="Päivämäärä" HorizontalAlignment="Left" Margin="10,327,0,0" VerticalAlignment="Top" FontSize="14"/>
-                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="713" Margin="263,10,0,0" VerticalAlignment="Top" Width="1008">
+                    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="683" Margin="263,10,0,0" VerticalAlignment="Top" Width="1008">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="25" />
@@ -325,7 +325,7 @@
                     <ListView Height="460" x:Name="lstAsiakas" Margin="285,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="986">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Width="auto" x:Name="lstAID" Header="Asiakas Nro."/>
+                                <GridViewColumn Width="auto" x:Name="lstAID" Header="Asiakas Nro."/> <!-- TODO: muuta: gvAID -->
                                 <GridViewColumn Width="auto" x:Name="lstNimi" Header="Nimi"/>
                                 <GridViewColumn Width="auto" x:Name="lstOsoite" Header="Osoite"/>
                                 <GridViewColumn Width="auto" x:Name="lstEmail" Header="Email"/>

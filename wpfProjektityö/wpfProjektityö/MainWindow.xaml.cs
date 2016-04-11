@@ -143,14 +143,22 @@ namespace wpfProjektityö
 
                             if (nimi != null && puh != null && Osoite != null && Aid != null && Email != null && tyyppi != null) // tarkistaa että muuttujassa on tietoa
                             {
-                                // this.lstAsiakas.Items.Add(new { Aid, nimi, puh, Osoite, Email, tyyppi }); 
-                                Label ots = new Label();
-                                ots.Content = nimi;
+                                string[] array = { "AID", "Nimi", "Email", "Osoite", "Puh", "Tyyppi" };
+                                GridViewColumn[] lst = { lstAID, lstNimi, lstEmail, lstOsoite, lstPuh, lstTyyppi };
 
-                                ots.Tag = tyyppi;
-                                this.lstAsiakas.Items.Add(asiakastiedot); // lisää listaan
+                                var gridView = new GridView();
+                                this.lstAsiakas.View = gridView;
+                                for (int i = 0; i < array.Length; i++)
+                                {
+                                    gridView.Columns.Add(new GridViewColumn
+                                    {
+                                        Header = lst[i].Header,
+                                        DisplayMemberBinding = new Binding(array[i])
 
-                                nimi = null; puh = null; Osoite = null; Aid = null; Email = null; tyyppi = null; // tyhjennys
+                                    });
+                                }
+                                this.lstAsiakas.Items.Add(new { AID = Aid, Nimi = nimi, Email = Email, Osoite = Osoite, Puh = puh, Tyyppi = tyyppi });
+                                nimi = null; puh = null; Osoite = null; Aid = null; Email = null; tyyppi = null;
                             }
                         }
                     }
@@ -217,7 +225,7 @@ namespace wpfProjektityö
 
         void päivitäListBoxPvm(DateTime pvm)
         {
-            ListBox[] laatikot = { lstMaanantai, lstTiistai, lstKeskiviikko, lstTorstai, lstPerjantai, lstLauantai, lstSunnuntai };
+            //ListBox[] laatikot = { lstMaanantai, lstTiistai, lstKeskiviikko, lstTorstai, lstPerjantai, lstLauantai, lstSunnuntai };
 
             for (int i = 0; i < laatikot.Length; i++)
             {
