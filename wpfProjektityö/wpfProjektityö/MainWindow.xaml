@@ -322,18 +322,19 @@
                             <Label Content="Haku:"/>
                         </Border>
                     </Border>
-                    <ListView Height="460" x:Name="lstAsiakas" Margin="285,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="986">
+                    <ListView Height="460" x:Name="lstAsiakas" Margin="285,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="986" MouseUp="lstAsiakas_MouseUp">
                         <ListView.View>
-                            <GridView>
-                                <GridViewColumn Width="auto" x:Name="lstAID" Header="Asiakas Nro."/> <!-- TODO: muuta: gvAID -->
-                                <GridViewColumn Width="auto" x:Name="lstNimi" Header="Nimi"/>
-                                <GridViewColumn Width="auto" x:Name="lstOsoite" Header="Osoite"/>
-                                <GridViewColumn Width="auto" x:Name="lstEmail" Header="Email"/>
-                                <GridViewColumn Width="auto" x:Name="lstPuh"  Header="Puh."/>
-                                <GridViewColumn Width="auto" x:Name="lstTyyppi" Header="Tyyppi"/>
-                                <GridViewColumn Width="auto" />
-                            </GridView>
-                        </ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="auto" x:Name="lstAID" Header="Asiakas Nro."/>
+                                    <!-- TODO: muuta: gvAID -->
+                                    <GridViewColumn Width="auto" x:Name="lstNimi" Header="Nimi"/>
+                                    <GridViewColumn Width="auto" x:Name="lstOsoite" Header="Osoite"/>
+                                    <GridViewColumn Width="auto" x:Name="lstEmail" Header="Email"/>
+                                    <GridViewColumn Width="auto" x:Name="lstPuh"  Header="Puh."/>
+                                    <GridViewColumn Width="auto" x:Name="lstTyyppi" Header="Tyyppi"/>
+                                    <GridViewColumn Width="auto" />
+                                </GridView>
+                            </ListView.View>
                     </ListView>
                     <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="182,47,0,0" Height="29"/>
                     <TextBox HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="167" Margin="10,50,0,0"/>

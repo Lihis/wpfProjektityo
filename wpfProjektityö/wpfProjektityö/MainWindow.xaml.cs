@@ -153,7 +153,7 @@ namespace wpfProjektityö
                                     gridView.Columns.Add(new GridViewColumn
                                     {
                                         Header = lst[i].Header,
-                                        DisplayMemberBinding = new Binding(array[i])
+                                        DisplayMemberBinding = new Binding(array[i]),
 
                                     });
                                 }
@@ -514,6 +514,15 @@ namespace wpfProjektityö
         {
             näytettäväVkPvm = viikonMaanataiPvm(kalenteri.SelectedDate.Value);
             haeVaraukset();
+        }
+
+        private void lstAsiakas_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (lstAsiakas.SelectedIndex >= 0)
+            {
+                MessageBox.Show("Hello world: " + lstAsiakas.SelectedIndex.ToString());
+                lstAsiakas.SelectedIndex = -1;
+            }
         }
     }
 }
