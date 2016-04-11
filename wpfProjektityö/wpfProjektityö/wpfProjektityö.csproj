@@ -60,6 +60,9 @@
     <Compile Include="LisääVarausWindow.xaml.cs">
       <DependentUpon>LisääVarausWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Asiakastiedot.xaml.cs">
+      <DependentUpon>Asiakastiedot.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +76,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="LisääVarausWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Asiakastiedot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

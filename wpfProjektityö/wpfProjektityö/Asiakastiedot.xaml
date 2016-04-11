@@ -1,0 +1,28 @@
+﻿<Window x:Class="wpfProjektityö.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Asiakastiedot" Height="293" Width="650">
+    <Grid Margin="0,0,2,-3">
+        <Label HorizontalAlignment="Left" Margin="37,29,0,0" VerticalAlignment="Top" Width="94">
+            <Label RenderTransformOrigin="0.49,0.577"/>
+        </Label>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="25,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="106"/>
+        <Label Content="Varaajan nimi" HorizontalAlignment="Left" Height="31" Margin="25,29,0,0" VerticalAlignment="Top" Width="90"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="147,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <Label Content="Postinumero" HorizontalAlignment="Left" Height="25" Margin="147,29,0,0" VerticalAlignment="Top" Width="84"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="292,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="114"/>
+        <Label Content="Postitoimipaikka" HorizontalAlignment="Left" Height="25" Margin="292,29,0,0" VerticalAlignment="Top" Width="114"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="436,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="106"/>
+        <Label Content="Postiosoite" HorizontalAlignment="Left" Height="27" Margin="436,29,0,0" VerticalAlignment="Top" Width="90" RenderTransformOrigin="0.411,0.519"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="25,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="106"/>
+        <Label Content="Puhelinnumero" HorizontalAlignment="Left" Height="27" Margin="25,91,0,0" VerticalAlignment="Top" Width="94"/>
+        <TextBox HorizontalAlignment="Left" Height="28" Margin="147,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125"/>
+        <Label Content="Sähköposti" HorizontalAlignment="Left" Height="27" Margin="147,91,0,0" VerticalAlignment="Top" Width="85"/>
+        <TextBox HorizontalAlignment="Left" Height="26" Margin="292,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="114"/>
+        <Label Content="Tyyppi" HorizontalAlignment="Left" Height="29" Margin="292,91,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Content="Poista asiakas" HorizontalAlignment="Left" Height="29" Margin="436,118,0,0" VerticalAlignment="Top" Width="106"/>
+        <Button Content="Peruuta" HorizontalAlignment="Left" Height="31" Margin="292,184,0,0" VerticalAlignment="Top" Width="114"/>
+        <Button Content="Tallenna" HorizontalAlignment="Left" Height="31" Margin="436,184,0,0" VerticalAlignment="Top" Width="106"/>
+
+    </Grid>
+</Window>
