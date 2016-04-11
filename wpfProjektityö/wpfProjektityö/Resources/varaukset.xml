@@ -3,7 +3,7 @@
   <Varaus>
     <VarausID>1</VarausID>
     <SaliID>1</SaliID>
-    <AsiakasID>001</AsiakasID>
+    <AsiakasID>1</AsiakasID>
     <Pvm>27.03.2016</Pvm>
     <Nimi>27.03.2016</Nimi>
     <AlkuAika>10:00</AlkuAika>
@@ -12,7 +12,7 @@
   <Varaus>
     <VarausID>2</VarausID>
     <SaliID>1</SaliID>
-    <AsiakasID>001</AsiakasID>
+    <AsiakasID>1</AsiakasID>
     <Pvm>28.03.2016</Pvm>
     <Nimi>28.03.2016</Nimi>
     <AlkuAika>10:00</AlkuAika>
@@ -21,7 +21,7 @@
   <Varaus>
     <VarausID>3</VarausID>
     <SaliID>1</SaliID>
-    <AsiakasID>001</AsiakasID>
+    <AsiakasID>1</AsiakasID>
     <Pvm>03.04.2016</Pvm>
     <Nimi>03.04.2016</Nimi>
     <AlkuAika>12:00</AlkuAika>
