@@ -132,7 +132,7 @@ namespace wpfProjektityö
                             if (nimi != null && puh != null && Osoite != null && Aid != null && Email != null && tyyppi != null) // tarkistaa että muuttujassa on tietoa
                             {
                                 string[] array = { "AID", "Nimi", "Email", "Osoite", "Puh", "Tyyppi" };
-                                GridViewColumn[] lst = { lstAID, lstNimi, lstEmail, lstOsoite, lstPuh, lstTyyppi };
+                                GridViewColumn[] lst = { gvAID, gvNimi, gvEmail, gvOsoite, gvPuh, gvTyyppi };
 
                                 var gridView = new GridView();
                                 this.lstAsiakas.View = gridView;
