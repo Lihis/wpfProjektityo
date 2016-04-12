@@ -225,8 +225,6 @@ namespace wpfProjektityö
 
         void päivitäListBoxPvm(DateTime pvm)
         {
-            //ListBox[] laatikot = { lstMaanantai, lstTiistai, lstKeskiviikko, lstTorstai, lstPerjantai, lstLauantai, lstSunnuntai };
-
             for (int i = 0; i < laatikot.Length; i++)
             {
                 laatikot[i].Tag = (pvm.AddDays(i).Date).ToString("d");
@@ -516,6 +514,7 @@ namespace wpfProjektityö
             haeVaraukset();
         }
 
+        // Asiakas-tab, näytä asiakkaan tiedot
         private void lstAsiakas_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (lstAsiakas.SelectedIndex >= 0)

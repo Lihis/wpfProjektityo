@@ -63,8 +63,8 @@ namespace wpfProjektityö
                 btnTeeVaraus.Content = "Tallenna";
                 // Hae varauksen tiedot
                 haeVarauksenTiedot(itemTag);
-                // Hae asiakkaan tiedot
-                haeAsiakkaanTiedot();
+                // Hae asiakkaan tiedot (asiakasID, ikkuna)
+                XMLfunktiot.haeAsiakkaanTiedot(asiakasID, this);
             }
             // ..muussa tapauksessa ollaan tekemässä uutta varausta
             else
@@ -139,82 +139,7 @@ namespace wpfProjektityö
             reader.Close();
         }
 
-        void haeAsiakkaanTiedot()
-        {
-            // Hae asiakkaan tiedot
-            XmlReader reader = XmlReader.Create(@"Resources\XMLasiakas.xml");
-
-            while (reader.Read())
-            {
-                reader.MoveToContent();
-
-                if (reader.NodeType == XmlNodeType.Element &&
-                    reader.Name == "AID")
-                {
-                    // Lue kunnes ollaan halutun asiakkaan AID kohdalla
-                    reader.Read();
-                    if (reader.Value == asiakasID)
-                    {
-                        while (reader.Read())
-                        {
-                            if (reader.NodeType == XmlNodeType.Element)
-                            {
-                                switch (reader.Name)
-                                {
-                                    case "Nimi":
-                                        reader.Read();
-                                        txtVaraajanNimi.Text = reader.Value;
-                                        break;
-                                    case "Osoite":
-                                        reader.Read();
-                                        txtPostiosoite.Text = reader.Value;
-                                        break;
-                                    case "PostNum":
-                                        reader.Read();
-                                        txtPostinumero.Text = reader.Value;
-                                        break;
-                                    case "Postitoimipaik":
-                                        reader.Read();
-                                        txtPostitoimipaikka.Text = reader.Value;
-                                        break;
-                                    case "Email":
-                                        reader.Read();
-                                        txtEmail.Text = reader.Value;
-                                        break;
-                                    case "Puh":
-                                        reader.Read();
-                                        txtPuhNro.Text = reader.Value;
-                                        break;
-                                    case "tyyppi":
-                                        reader.Read();
-                                        if (reader.Value == "Yksityinen")
-                                        {
-                                            cmbTyyppi.SelectedIndex = 0;
-                                        }
-                                        else
-                                        {
-                                            cmbTyyppi.SelectedIndex = 1;
-                                        }
-                                        break;
-                                    default:
-                                        break;
-                                }
-                            }
-
-                            // Lopeta lukeminen kun saavutaan </asiakas> lopetus tagiin
-                            if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "asiakas")
-                            {
-                                break;
-                            }
-                        }
-                        // Asiakkaan tiedot haettu -> lopeta lukeminen
-                        break;
-                    }
-                }
-            }
-            reader.Close();
-        }
-
+        // Hae asiakkaan tiedot asiakkaan nimellä
         void haeAsiakkaanTiedotNimellä(string asiakkaanNimi)
         {
             // Hae asiakkaan tiedot
@@ -294,6 +219,7 @@ namespace wpfProjektityö
             reader.Close();
         }
 
+        // Lisää varaus XML:ään
         void lisääVaraus()
         {
             // Tarkista että varauksella on nimi

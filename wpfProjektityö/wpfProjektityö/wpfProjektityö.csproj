@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="XMLfunktiot.cs" />
     <Compile Include="LisääVarausWindow.xaml.cs">
       <DependentUpon>LisääVarausWindow.xaml</DependentUpon>
     </Compile>
