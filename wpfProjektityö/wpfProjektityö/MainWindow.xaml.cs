@@ -405,38 +405,11 @@ namespace wpfProjektityö
         {
             ListBox listalaatikko = null;
 
-            // TODO: ehkä for-looppi?
-            if (lstMaanantai.SelectedIndex != -1)
+            // Hae listalaatikko jossa on jokin item valittu
+            for (int i = 0; i < laatikot.Length; i++)
             {
-                listalaatikko = lstMaanantai;
-            }
-            else if (lstTiistai.SelectedIndex != -1)
-            {
-                listalaatikko = lstTiistai;
-            }
-            else if (lstKeskiviikko.SelectedIndex != -1)
-            {
-                listalaatikko = lstKeskiviikko;
-            }
-            else if (lstTorstai.SelectedIndex != -1)
-            {
-                listalaatikko = lstTorstai;
-            }
-            else if (lstPerjantai.SelectedIndex != -1)
-            {
-                listalaatikko = lstPerjantai;
-            }
-            else if (lstLauantai.SelectedIndex != -1)
-            {
-                listalaatikko = lstLauantai;
-            }
-            else if (lstSunnuntai.SelectedIndex != -1)
-            {
-                listalaatikko = lstSunnuntai;
-            }
-            else
-            {
-                MessageBox.Show("Valitse ensin varattava aika!");
+                if (laatikot[i].SelectedIndex != -1)
+                    listalaatikko = laatikot[i];
             }
 
             // Näytä Varaus-ikkuna vain jos varattava aika valittu
@@ -447,6 +420,10 @@ namespace wpfProjektityö
                 varausIkkuna.ShowDialog();
                 // Päivitä viikkonäkymä
                 haeVaraukset();
+            }
+            else
+            {
+                MessageBox.Show("Valitse ensin varattava aika!");
             }
         }
 
