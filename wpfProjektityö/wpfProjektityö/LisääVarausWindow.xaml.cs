@@ -35,13 +35,14 @@ namespace wpfProjektityö
             // SaliID
             valittuSaliID = valittuSali.Tag.ToString();
 
+            // Looppaa kaikkien valittujen itemien läpi
             foreach (ListBoxItem valittu in list.SelectedItems)
             {
                 // Hae Tag, tägissä on varausID jos on klikattu jo olemassa olevaa varausta
                 if (valittu.Tag != null)
                     itemTag = valittu.Tag.ToString();
 
-                // Lisää itemi listaan
+                // Lisää itemi väliaikaiseen listaan
                 valitutItemit.Add(list.Items.IndexOf(valittu));
             }
         }
@@ -131,7 +132,7 @@ namespace wpfProjektityö
                                 break;
                             }
                         }
-                        // Asiakkaan tiedot haettu -> lopeta lukeminen
+                        // Varauksen tiedot haettu -> lopeta lukeminen
                         break;
                     }
                 }
@@ -512,11 +513,13 @@ namespace wpfProjektityö
             lisääAsiakas();
         }
 
+        // "Hae tietokannasta" nappin Click-event
         private void btnHaeAsiaksTietokannasta_Click(object sender, RoutedEventArgs e)
         {
             haeAsiakasTietokannasta();
         }
 
+        // "Hae tietokannasta" tekstikentän KeyDown-event
         private void txtHaeVaraajanNimellä_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)

@@ -15,21 +15,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 
-/*  var gridView = new GridView();                  
-                    this.lstAsiakas.View = gridView;
-                    gridView.Columns.Add(new GridViewColumn
-                    {
-                        Header = lstAID.Header,
-                        DisplayMemberBinding = new Binding("AID")
-
-                    });
-                    gridView.Columns.Add(new GridViewColumn
-                    {
-                        Header = lstNimi.Header,
-                        DisplayMemberBinding = new Binding("Nimi")
-                    });
-                    this.lstAsiakas.Items.Add(new { AID = reader.Value , Nimi = (reader.Value) }); */
-
 namespace wpfProjektityö
 {
     /// <summary>
@@ -56,15 +41,17 @@ namespace wpfProjektityö
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Populate laatikot
+            // Listalaatikot array:n
             laatikot = new ListBox[] { lstMaanantai, lstTiistai, lstKeskiviikko, lstTorstai, lstPerjantai, lstLauantai, lstSunnuntai };
             // Hae tilat listalaatikkoon
             haeTilat();
             // Välitä kuluvan viikon maanantain päivämäärä aliohjelmaan
             haeVaraukset();
+            // Hae asiakkaat
             haeAsiakkaat();
         }
 
+        // Palauttaa välitetyltä päivämäärältä kyseisen viikon maanantain päivämäärän
         static DateTime viikonMaanataiPvm(DateTime pvm)
         {
             DateTime maanataiPvm;
@@ -78,6 +65,7 @@ namespace wpfProjektityö
             return maanataiPvm;
         }
 
+        // Hae asiakkaat asiakas-tabiin
         void haeAsiakkaat()
         {
             XmlReader reader = XmlReader.Create(@"Resources\XMLasiakas.xml");
@@ -198,7 +186,7 @@ namespace wpfProjektityö
                     item = new ListBoxItem();
                     // Itemin teksti ("otsikko") joka näkyy ListBox:ssa
                     item.Content = tilanNimi;
-                    // Itemin tagi
+                    // Itemin tagi ("piilotettu" teksti)
                     item.Tag = tilaID;
 
                     lstTilat.Items.Add(item);
@@ -223,6 +211,7 @@ namespace wpfProjektityö
             return (erotus * 25);
         }
 
+        // Päivämäärä listboxin tagiin (listbox = ma, ti ke, jne.)
         void päivitäListBoxPvm(DateTime pvm)
         {
             for (int i = 0; i < laatikot.Length; i++)
@@ -267,7 +256,6 @@ namespace wpfProjektityö
             {
                 reader.MoveToContent();
 
-                // Varauksen ID
                 if (reader.NodeType == XmlNodeType.Element &&
                     reader.Name == "VarausID")
                 {
@@ -417,6 +405,7 @@ namespace wpfProjektityö
         {
             ListBox listalaatikko = null;
 
+            // TODO: ehkä for-looppi?
             if (lstMaanantai.SelectedIndex != -1)
             {
                 listalaatikko = lstMaanantai;
@@ -461,6 +450,8 @@ namespace wpfProjektityö
             }
         }
 
+        // Ota käyttöön tai poista käytöstä ListBoxin "SelectionChanged"-event
+        // true -> poistaa eventin, false -> ottaa käyttöön
         void listBox_SelectionChange(bool poista)
         {
             if (poista == true)
@@ -498,6 +489,7 @@ namespace wpfProjektityö
             listBox_SelectionChange(false);
         }
 
+        // SelectionChanged-event kaikille listalaatikon itemeille (listalaatikko = ma, ti, ke, jne..)
         private void listalaatikko_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             nollaaListalaatikkojenValinnat((sender as ListBox));
@@ -508,6 +500,7 @@ namespace wpfProjektityö
             haeVaraukset();
         }
 
+        // Hae varaukset valitulta viikolta kun kalenterin valittu päivämäärä muuttuu
         private void kalenteri_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             näytettäväVkPvm = viikonMaanataiPvm(kalenteri.SelectedDate.Value);
