@@ -223,12 +223,16 @@ namespace wpfProjektityö
         // Lisää varaus XML:ään
         void lisääVaraus()
         {
+            string varausID = null, saliID = valittuSaliID, pvm = txtPvm.Text, nimi = null, alkuaika = cmbAlkuAika.Text, loppuaika = cmbLoppuAika.Text;
+            int tmpVarausID = -1;
+
             // Tarkista että varauksella on nimi
             if (string.IsNullOrWhiteSpace(txtVarauksenNimi.Text) || txtVarauksenNimi.Text.Length < 2)
             {
                 MessageBox.Show("Varauksen nimen pitää olla vähintään kolme merkkiä pitkä.");
                 return;
             }
+            nimi = txtVarauksenNimi.Text;
 
             // Tarkista että varauksella on asiakas
             if (asiakasID == null || string.IsNullOrWhiteSpace(asiakasID))
@@ -236,9 +240,6 @@ namespace wpfProjektityö
                 MessageBox.Show("Lisää varaukselle asiakas!");
                 return;
             }
-
-            string varausID = null, saliID = null, pvm = null, nimi = null, alkuaika = null, loppuaika = null;
-            int tmpVarausID = -1;
 
             // Uuden varauksen varausID:n hakeminen/laskeminen
             XmlReader reader = XmlReader.Create(@"Resources\varaukset.xml");
@@ -266,13 +267,6 @@ namespace wpfProjektityö
             }
             // Lisää yksi varausID:n koska ollaan tekemässä uutta varausta
             varausID = (tmpVarausID + 1).ToString();
-
-            // TODO: Tarkista että kentät ei ole tyhjiä
-            saliID = valittuSaliID;
-            pvm = txtPvm.Text;
-            nimi = txtVarauksenNimi.Text;
-            alkuaika = cmbAlkuAika.Text;
-            loppuaika = cmbLoppuAika.Text;
 
             //// XML kirjoitus
             // XML lataus
@@ -494,7 +488,6 @@ namespace wpfProjektityö
         // Varauksen lisääminen varaus.xml
         private void btnTeeVaraus_Click(object sender, RoutedEventArgs e)
         {
-
             // TODO: Varauksen muokkaamisen implementointi?
             if (itemTag != null)
             {
