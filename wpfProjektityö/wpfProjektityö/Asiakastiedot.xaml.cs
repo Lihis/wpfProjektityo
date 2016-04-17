@@ -34,5 +34,23 @@ namespace wpfProjektityö
             // Hae asikkaan tiedot tekstilaatikoihin
             XMLfunktiot.haeAsiakkaanTiedot(id, this);
         }
+
+        // Sulje ikkuna kun painetaan peruuta
+        private void btnPeruuta_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        // Asiakkaan tietojen tallentaminen XML:ään
+        private void btnTallenna_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Muokkaamista ei ole implementoitu.");
+        }
+
+        // Asiakkaan poistaminen XML:stä
+        private void btnPoistaAsiakas_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Poistamista ei ole implementoitu.");
+        }
     }
 }
