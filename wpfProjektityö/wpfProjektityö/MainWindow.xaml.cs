@@ -494,5 +494,11 @@ namespace wpfProjektityö
                 lstAsiakas.SelectedIndex = -1;
             }
         }
+
+        // Asiakkaan hakeminen
+        private void btnHaeAsiakas_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Hakua ei ole implementoitu.");
+        }
     }
 }
