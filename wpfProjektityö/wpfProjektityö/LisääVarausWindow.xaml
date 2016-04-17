@@ -85,7 +85,6 @@
             <ComboBoxItem Content="Yksityinen"/>
             <ComboBoxItem Content="Yritys"/>
         </ComboBox>
-        <!-- <TextBox Name="txtTyyppi" HorizontalAlignment="Left" Height="23" Margin="189,351,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/> -->
         <Button Name="btnLisääAsiakas" Content="Lisää asiakas" HorizontalAlignment="Left" Height="24" Margin="373,350,0,0" VerticalAlignment="Top" Width="109" Click="btnLisääAsiakas_Click"/>
         <Button Name="btnPeruuta" Content="Peruuta" HorizontalAlignment="Left" Height="28" Margin="282,385,0,0" VerticalAlignment="Top" Width="93" Click="btnPeruuta_Click"/>
         <Button Name="btnTeeVaraus" Content="Tee varaus" HorizontalAlignment="Left" Height="28" Margin="402,385,0,0" VerticalAlignment="Top" Width="100" Click="btnTeeVaraus_Click"/>

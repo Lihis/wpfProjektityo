@@ -7,10 +7,10 @@
             <TabItem Header="Varaus">
                 <Grid Background="#FFE5E5E5">
                     <Border BorderBrush="Black" BorderThickness="1" Margin="10,10,1023,459">
-                        <ListBox x:Name="lstTilat" HorizontalAlignment="Left" Height="284" Margin="-1,27,-1,-1" VerticalAlignment="Top" Width="248" SelectionChanged="lstTilat_SelectionChanged"/>
+                        <ListBox x:Name="lstTilat" HorizontalAlignment="Left" Height="288" Margin="-0.8,27.2,-1,-1.6" VerticalAlignment="Top" Width="253" SelectionChanged="lstTilat_SelectionChanged"/>
                     </Border>
                     <Label Content="Tilat" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
-                    <Border BorderBrush="Black" BorderThickness="1" Margin="10,327,1023,58">
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="10,327,1022.6,91.8">
                         <Calendar Name="kalenteri" Margin="9,32,9,9" SelectedDatesChanged="kalenteri_SelectedDatesChanged"/>
                     </Border>
                     <Label Content="Päivämäärä" HorizontalAlignment="Left" Margin="10,327,0,0" VerticalAlignment="Top" FontSize="14"/>
@@ -312,7 +312,7 @@
                             </ListBox>
                         </Grid>
                     </Border>
-                    <Button Name="teeVaraus" Content="Tee varaus" HorizontalAlignment="Left" Margin="178,729,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="teeVaraus_Click"/>
+                    <Button Name="teeVaraus" Content="Tee varaus" HorizontalAlignment="Left" Margin="263,698,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="teeVaraus_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Asiakas" HorizontalAlignment="Left" Width="55">
@@ -324,16 +324,16 @@
                     </Border>
                     <ListView Height="460" x:Name="lstAsiakas" Margin="285,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="986" MouseUp="lstAsiakas_MouseUp">
                         <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Width="auto" x:Name="gvAID" Header="Asiakas Nro."/>
-                                    <GridViewColumn Width="auto" x:Name="gvNimi" Header="Nimi"/>
-                                    <GridViewColumn Width="auto" x:Name="gvOsoite" Header="Osoite"/>
-                                    <GridViewColumn Width="auto" x:Name="gvEmail" Header="Email"/>
-                                    <GridViewColumn Width="auto" x:Name="gvPuh"  Header="Puh."/>
-                                    <GridViewColumn Width="auto" x:Name="gvTyyppi" Header="Tyyppi"/>
-                                    <GridViewColumn Width="auto" />
-                                </GridView>
-                            </ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="auto" x:Name="gvAID" Header="Asiakas Nro."/>
+                                <GridViewColumn Width="auto" x:Name="gvNimi" Header="Nimi"/>
+                                <GridViewColumn Width="auto" x:Name="gvOsoite" Header="Osoite"/>
+                                <GridViewColumn Width="auto" x:Name="gvEmail" Header="Email"/>
+                                <GridViewColumn Width="auto" x:Name="gvPuh"  Header="Puh."/>
+                                <GridViewColumn Width="auto" x:Name="gvTyyppi" Header="Tyyppi"/>
+                                <GridViewColumn Width="auto" />
+                            </GridView>
+                        </ListView.View>
                     </ListView>
                     <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Margin="182,47,0,0" Height="29"/>
                     <TextBox HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="167" Margin="10,50,0,0"/>

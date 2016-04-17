@@ -11,88 +11,28 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Xml;
 
 namespace wpfProjektityö
 {
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class AsiakasTiedotWindow : Window
     {
-        public Window1()
+        object valittuItem;
+
+        public AsiakasTiedotWindow(object item)
         {
             InitializeComponent();
-            Asiakastiedot();
+            valittuItem = item;
         }
-        public void Asiakastiedot()
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            XmlReader reader = XmlReader.Create(@"Resources\XMLasiakas.xml");
-
-            while (reader.Read())
-            {
-                reader.MoveToContent();
-
-                if (reader.NodeType == XmlNodeType.Element &&
-                    reader.Name == "Asiakastiedot")
-                {
-                    // Lue kunnes ollaan halutun asiakkaan VarausID:n kohdalla
-                    reader.Read();
-                    if (reader.Value == "AID")
-                    {
-                        while (reader.Read())
-                        {
-                            if (reader.NodeType == XmlNodeType.Element)
-                            {
-                                switch (reader.Name)
-                                {
-                                    //varaajan nimi
-                                    case "Nimi":
-                                        reader.Read();
-                                        txtVaraajannimi.Text = reader.Value;
-                                        break;
-                                    // postinumero
-                                    case "PostNum":
-                                        reader.Read();
-                                        txtPostinumero.Text = reader.Value;
-                                        break;
-                                    // postitoimipaikka
-                                    case "Postitoimipaikka":
-                                        reader.Read();
-                                        txtPostitoimipaikka.Text = reader.Value;
-                                        break;
-                                    case "Osoite":
-                                        reader.Read();
-                                        txtPostiosoite.Text = reader.Value;
-                                        break;
-                                    case "Puh":
-                                        reader.Read();
-                                        txtPuh.Text = reader.Value;
-                                        break;
-                                    case "Email":
-                                        reader.Read();
-                                        txtEmail.Text = reader.Value;
-                                        break;
-                                    case "tyyppi":
-                                        reader.Read();
-                                        txtTyyppi.Text = reader.Value;
-                                        break;
-                                }
-                            }
-                        }  // Lopeta lukeminen kun saavutaan </asiakas> lopetus tagiin
-                        if (reader.NodeType == XmlNodeType.EndElement && reader.Name == "asiakas")
-                        {
-                            break;
-                        }
-                    }
-                    // Asiakkaan tiedot haettu -> lopeta lukeminen
-                    break;
-                }
-
-            }
-            return;
+            string tmp = valittuItem.ToString();
+            string id = tmp.Substring((tmp.IndexOf("=") + 1), (tmp.IndexOf(",") - (tmp.IndexOf("=") + 1))).Trim();
+            // Hae asikkaan tiedot tekstilaatikoihin
+            XMLfunktiot.haeAsiakkaanTiedot(id, this);
         }
     }
 }
-
-

@@ -489,7 +489,8 @@ namespace wpfProjektityö
         {
             if (lstAsiakas.SelectedIndex >= 0)
             {
-                MessageBox.Show("Hello world: " + lstAsiakas.SelectedIndex.ToString());
+                Window asiakasIkkuna = new AsiakasTiedotWindow(lstAsiakas.SelectedItem);
+                asiakasIkkuna.ShowDialog();
                 lstAsiakas.SelectedIndex = -1;
             }
         }
