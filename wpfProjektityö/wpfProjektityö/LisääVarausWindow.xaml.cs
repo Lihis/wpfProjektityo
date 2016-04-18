@@ -327,7 +327,8 @@ namespace wpfProjektityö
         {
             string asiakasID = null, nimi = null, osoite = null, postNum = null, postitoimipaik = null,
                 email = null, puhNro = null, tyyppi = null;
-            int tmpAsiakasID = -1;
+            int tmpAsiakasID = -1, tmp = 0;
+
             // Uuden asiakkaan AID:n hakeminen/laskeminen
             XmlReader reader = XmlReader.Create(@"Resources\XMLasiakas.xml");
             while (reader.Read())
@@ -349,7 +350,7 @@ namespace wpfProjektityö
            
             if (tmpAsiakasID < 0)
             {
-                MessageBox.Show("AsikasID hakeminen epäonnistui.");
+                MessageBox.Show("AsiakasID hakeminen epäonnistui.");
                 return;
             }
             // Lisää yksi asikasID:n koska ollaan lisäämässä uutta asiakasta
@@ -358,9 +359,45 @@ namespace wpfProjektityö
             nimi = txtVaraajanNimi.Text;
             osoite = txtPostiosoite.Text;
             postNum = txtPostinumero.Text;
+            if (!int.TryParse(postNum, out tmp))
+            {
+                MessageBox.Show("Postinumero sisältää virheellisiä merkkejä.");
+                return;
+            }
             postitoimipaik = txtPostitoimipaikka.Text;
             email = txtEmail.Text;
+            tmp = 0;
+            for (int i = 0; i < email.Length; i++)
+            {
+                if (Regex.IsMatch(email[i].ToString(), "@", RegexOptions.IgnoreCase))
+                {
+                    tmp++;
+                }
+            }
+            if (tmp != 1)
+            {
+                MessageBox.Show("Sähköpostiosoitteesta puuttuu @-merkki");
+                return;
+            }
+            tmp = 0;
+            for (int i = 0; i < email.Length; i++)
+            {
+                if (Regex.IsMatch(email[i].ToString(), "\\.", RegexOptions.IgnoreCase))
+                {
+                    tmp++;
+                }
+            }
+            if (tmp <= 0)
+            {
+                MessageBox.Show("Sähköpostiosoite on virheellinen.");
+                return;
+            }
             puhNro = txtPuhNro.Text;
+            if (!int.TryParse(puhNro, out tmp))
+            {
+                MessageBox.Show("Puhelinnumero sisältää virheellisiä merkkejä.");
+                return;
+            }
             if (cmbTyyppi.SelectedIndex != -1)
             {
                 tyyppi = ((ComboBoxItem)cmbTyyppi.SelectedItem).Content.ToString();
