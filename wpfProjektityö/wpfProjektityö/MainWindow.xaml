@@ -7,7 +7,7 @@
             <TabItem Header="Varaus">
                 <Grid Background="#FFE5E5E5">
                     <Border BorderBrush="Black" BorderThickness="1" Margin="10,10,1023,459">
-                        <ListBox x:Name="lstTilat" HorizontalAlignment="Left" Height="288" Margin="-0.8,27.2,-1,-1.6" VerticalAlignment="Top" Width="253" SelectionChanged="lstTilat_SelectionChanged"/>
+                        <ListBox x:Name="lstTilat" HorizontalAlignment="Left" Height="288" Margin="-1,27,-1,-5" VerticalAlignment="Top" Width="248" SelectionChanged="lstTilat_SelectionChanged"/>
                     </Border>
                     <Label Content="Tilat" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
                     <Border BorderBrush="Black" BorderThickness="1" Margin="10,327,1022.6,91.8">
