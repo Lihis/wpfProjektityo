@@ -1,7 +1,7 @@
 ﻿<Window x:Class="wpfProjektityö.AsiakasTiedotWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Asiakastiedot" Height="293" Width="650" Loaded="Window_Loaded">
+        Title="Asiakastiedot" Height="293" Width="650" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid Margin="0,0,2,-3">
         <Label HorizontalAlignment="Left" Margin="37,29,0,0" VerticalAlignment="Top" Width="94">
             <Label RenderTransformOrigin="0.49,0.577"/>
